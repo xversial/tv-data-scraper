@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.duvallwifi.quickbooks.payment</groupId>
+        <artifactId>quickbooks-app-deployment</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>quickbooks-app-tomcat-war</artifactId>
+
+    <name>quickbooks-app-tomcat-war</name>
+    <description>Quickbooks App WAR</description>
+    <packaging>war</packaging>
+
+    <dependencies>
+
+        <!-- <editor-fold desc="Project Module dependencies"> -->
+
+        <dependency>
+            <groupId>com.duvallwifi.quickbooks.payment</groupId>
+            <artifactId>web-app</artifactId>
+        </dependency>
+
+        <!-- </editor-fold> END Project Module dependencies -->
+
+        <!-- <editor-fold desc="Telemetry/Tracing"> -->
+
+        <dependency>
+            <groupId>io.sentry</groupId>
+            <artifactId>sentry-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.sentry</groupId>
+            <artifactId>sentry-logback</artifactId>
+        </dependency>
+
+        <!-- </editor-fold> -->
+
+        <!-- <editor-fold desc="Logging"> -->
+        <!--<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
+        </dependency>-->
+        <!-- </editor-fold> END Logging -->
+
+        <!-- <editor-fold desc="Spring Boot dependencies"> -->
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- </editor-fold> END Spring Boot dependencies -->
+
+        <!-- <editor-fold desc="Database"> -->
+
+        <!-- <editor-fold desc="Database Migrations"> -->
+        <!-- </editor-fold> END Database Migrations -->
+
+        <!-- <editor-fold desc="JDBC Drivers"> -->
+
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>mssql-jdbc</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <!-- </editor-fold> END JDBC Drivers -->
+
+        <!-- </editor-fold> END Database -->
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${org.spring.boot.version}</version>
+                <configuration>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                    <mainClass>com.duvallwifi.hotspotportal.SpringBootTomcatApplication</mainClass>
+                    <executable>true</executable>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+            </plugin>
+        </plugins>
+        <resources>
+            <resource>
+                <directory>${project.basedir}/src/main/resources</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                    <include>**/*.properties</include>
+                    <include>**/*.html</include>
+                    <include>**/*</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
+
+    <profiles>
+
+    </profiles>
+
+    <properties>
+
+    </properties>
+</project>

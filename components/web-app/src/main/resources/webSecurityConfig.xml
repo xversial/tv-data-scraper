@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:util="http://www.springframework.org/schema/util"
+             xmlns:security="http://www.springframework.org/schema/security"
+             xsi:schemaLocation="
+		http://www.springframework.org/schema/security
+        https://www.springframework.org/schema/security/spring-security.xsd
+        http://www.springframework.org/schema/util  http://www.springframework.org/schema/util/spring-util-3.1.xsd
+		http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd"
+>
+<!--    <security:http use-expressions="true" request-matcher="ant">-->
+<!--        <intercept-url pattern="/api/**" request-matcher-ref="csrfMatcher"/>-->
+<!--    </security:http>-->
+    <http pattern="/api/**">
+        <intercept-url pattern="/api/radius/**" access="permitAll()"/>
+        <csrf disabled="true"/>
+        <form-login login-page='/login'
+                    default-target-url="/homepage"
+                    login-processing-url="/login/process"
+                    authentication-success-handler-ref="authenticationSuccessHandler"
+                    authentication-failure-handler-ref="authenticationFailureHandler"
+                    authentication-failure-url="/login?error=true"/>
+        <logout logout-success-url="/login" logout-url="/logout"/>
+    </http>
+    <http pattern="/debugging/**">
+        <intercept-url pattern="/debugging/**" access="permitAll()"/>
+        <csrf disabled="true"/>
+        <form-login login-page='/login'
+                    default-target-url="/homepage"
+                    login-processing-url="/login/process"
+                    authentication-success-handler-ref="authenticationSuccessHandler"
+                    authentication-failure-handler-ref="authenticationFailureHandler"
+                    authentication-failure-url="/login?error=true"/>
+        <logout logout-success-url="/login" logout-url="/logout"/>
+    </http>
+    <http use-expressions="true">
+        <intercept-url pattern="/login*" access="isAnonymous()"/>
+        <intercept-url pattern="/register*" access="isAnonymous()"/>
+        <intercept-url pattern="/logout*" access="permitAll()"/>
+        <intercept-url pattern="/img/**" access="permitAll()"/>
+        <intercept-url pattern="/js/**" access="permitAll()"/>
+        <intercept-url pattern="/css/**" access="permitAll()"/>
+        <intercept-url pattern="/static/**" access="permitAll()"/>
+        <intercept-url pattern="/vendor/**" access="permitAll()"/>
+        <intercept-url pattern="/favicon.ico" access="permitAll()"/>
+
+        <intercept-url pattern="/accessDenied" access="permitAll()"/>
+
+        <intercept-url pattern="/unactivated" access="hasAuthority('ROLE_INACTIVE')"/>
+        <intercept-url pattern="/unactivated/redeem-voucher" access="hasAuthority('ROLE_INACTIVE')"/>
+
+        <intercept-url pattern="/slider" access="hasAnyAuthority('ROLE_ACTIVATED', 'ROLE_USER', 'ROLE_ADMIN', 'ROLE_ROOT', 'test')"/>
+        <intercept-url pattern="/" access="hasAnyAuthority('ROLE_ACTIVATED', 'ROLE_USER', 'ROLE_ADMIN', 'ROLE_ROOT', 'test')"/>
+        <intercept-url pattern="/**" access="hasAnyAuthority('ROLE_ACTIVATED',
+            'ROLE_USER', 'ROLE_ADMIN', 'ROLE_ROOT', 'test'
+            )"/>
+<!--        <intercept-url pattern="/**" access="isAuthenticated()"/>-->
+        <access-denied-handler ref="customAccessDeniedHandler"/>
+        <csrf />
+
+        <form-login login-page='/login'
+                    default-target-url="/homepage"
+                    login-processing-url="/login/process"
+                    authentication-success-handler-ref="authenticationSuccessHandler"
+                    authentication-failure-handler-ref="authenticationFailureHandler"
+                    authentication-failure-url="/login?error=true"/>
+        <logout logout-success-url="/login" logout-url="/logout"/>
+    </http>
+
+    <authentication-manager>
+        <!--<authentication-provider>
+            <user-service>
+                <user name="user1" password="user1Pass" authorities="ROLE_USER"/>
+                <user name="test" password="test" authorities="ROLE_USER"/>
+            </user-service>
+            <password-encoder ref="encoder"/>
+        </authentication-provider>-->
+<!--        <authentication-provider-->
+<!--                ref="customAuthenticationProvider" />-->
+        <authentication-provider user-service-ref="userDetailsService">
+            <password-encoder ref="encoder"/>
+        </authentication-provider>
+    </authentication-manager>
+
+    <beans:bean id="encoder"
+                class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+        <beans:constructor-arg name="strength" value="12" />
+    </beans:bean>
+    <beans:bean id="authenticationSuccessHandler"
+    class="com.duvallwifi.quickbooks.payment.accounting.handlers.CustomAuthenticationSuccessHandler"/>
+    <beans:bean id="authenticationFailureHandler"
+    class="com.duvallwifi.quickbooks.payment.accounting.handlers.CustomAuthenticationFailureHandler"/>
+
+    <beans:bean id="userDetailsService"
+                class="com.duvallwifi.quickbooks.payment.accounting.service.MyUserDetailsService"/>
+    <beans:bean id="csrfMatcher" class="org.springframework.security.web.util.matcher.OrRequestMatcher">
+        <beans:constructor-arg>
+            <util:list value-type="org.springframework.security.web.util.matcher.RequestMatcher">
+                <beans:bean class="org.springframework.security.web.util.matcher.AntPathRequestMatcher">
+                    <beans:constructor-arg name="pattern" value="/rest/**"/>
+                    <beans:constructor-arg name="httpMethod" value="POST"/>
+                </beans:bean>
+                <beans:bean class="org.springframework.security.web.util.matcher.AntPathRequestMatcher">
+                    <beans:constructor-arg name="pattern" value="/rest/**"/>
+                    <beans:constructor-arg name="httpMethod" value="PUT"/>
+                </beans:bean>
+                <beans:bean class="org.springframework.security.web.util.matcher.AntPathRequestMatcher">
+                    <beans:constructor-arg name="pattern" value="/rest/**"/>
+                    <beans:constructor-arg name="httpMethod" value="DELETE"/>
+                </beans:bean>
+            </util:list>
+        </beans:constructor-arg>
+    </beans:bean>
+    <beans:bean id="customAccessDeniedHandler"
+                class="com.duvallwifi.quickbooks.payment.accounting.handlers.CustomAccessDeniedHandler"/>
+
+    <!--    <beans:bean id="customAuthenticationProvider"-->
+<!--    class="com.duvallwifi.hotspot.auth.CustomAuthenticationProvider" depends-on="userDetailsService">-->
+<!--        <beans:constructor-arg value="userDetailsService" />-->
+<!--        <beans:property name="userDetailsService">-->
+<!--            <beans:ref bean="userDetailsService" />-->
+<!--        </beans:property>-->
+<!--    </beans:bean>-->
+
+
+</beans:beans>

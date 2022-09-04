@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout
+                    pattern="[%d{MM:dd HH:mm:ss.SSS}] [%level] [%logger{36}] - %msg{nolookups}%n"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Logger name="com.duvallwifi.hotspotportal" level="TRACE"/>
+        <Logger name="com.duvallwifi.hotspot" level="TRACE"/>
+        <Logger name="com.duvallwifi" level="TRACE"/>
+
+        <Logger name="org.springframework.orm" level="WARN"/>
+        <Logger name="org.springframework.beans.factory" level="INFO"/>
+        <Logger name="org.springframework.context.annotation" level="INFO"/>
+        <Logger name="org.springframework.jdbc.core" level="WARN"/>
+        <Logger name="org.springframework.boot.web.servlet" level="INFO"/>
+        <Logger name="org.springframework.web" level="INFO"/>
+        <Logger name="org.springframework.data" level="INFO"/>
+        <Logger name="org.springframework.jdbc" level="INFO"/>
+        <Logger name="org.springframework.scheduling" level="INFO"/>
+        <Logger name="org.springframework.boot.actuate" level="INFO"/>
+
+        <Logger name="org.springframework.data.rest" level="INFO"/>
+        <Logger name="org.springframework.data.rest.webmvc" level="INFO"/>
+
+        <Logger name="org.springframework.ws.soap.server" level="DEBUG"/>
+
+        <Logger name="org.springframework.core.io" level="DEBUG"/>
+        <Logger name="org.springframework.security" level="DEBUG"/>
+        <Logger name="org.springframework.support" level="INFO"/>
+        <Logger name="org.springframework.boot" level="INFO"/>
+        <Logger name="org.springframework.ws" level="INFO"/>
+        <Logger name="org.springframework" level="INFO"/>
+
+        <Logger name="io.netty" level="INFO"/>
+
+        <Logger name="org.flywaydb.core" level="INFO"/>
+        <Logger name="com.zaxxer.hikari" level="INFO"/>
+        <Logger name="org.hibernate" level="INFO"/>
+        <Logger name="org.hibernate.type" level="WARN"/>
+        <Logger name="org.hibernate.engine.jdbc.env" level="DEBUG"/>
+        <Logger name="org.hibernate.validator" level="INFO"/>
+
+
+        <Root level="INFO">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>

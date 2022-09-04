@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="WARN">
+    <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>[%d{MM:dd HH:mm:ss.SSS}] [%level] [%logger{36}] - %msg{nolookups}%n
+            </pattern>
+        </encoder>
+    </appender>
+    <logger name="com.duvallwifi" level="TRACE"/>
+    <root level="INFO">
+        <appender-ref ref="Console"/>
+    </root>
+</configuration>
