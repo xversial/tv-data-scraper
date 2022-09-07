@@ -16,14 +16,10 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.duvallwifi.quickbooks.payment</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>models</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>com.github.ua-parser</groupId>
-            <artifactId>uap-java</artifactId>
-        </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>

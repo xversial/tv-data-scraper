@@ -47,22 +47,22 @@
 
             <!-- <editor-fold desc="Project Module dependencies"> -->
             <dependency>
-                <groupId>com.duvallwifi.quickbooks.payment</groupId>
+                <groupId>${project.groupId}</groupId>
                 <artifactId>web-app</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.duvallwifi.quickbooks.payment</groupId>
+                <groupId>${project.groupId}</groupId>
                 <artifactId>models</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.duvallwifi.quickbooks.payment</groupId>
+                <groupId>${project.groupId}</groupId>
                 <artifactId>accounting</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.duvallwifi.quickbooks.payment</groupId>
+                <groupId>${project.groupId}</groupId>
                 <artifactId>quickbooks-app-tomcat-war</artifactId>
                 <version>${project.version}</version>
             </dependency>

@@ -20,11 +20,11 @@
 
         <!-- <editor-fold desc="Project Module dependencies"> -->
         <dependency>
-            <groupId>com.duvallwifi.quickbooks.payment</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>models</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.duvallwifi.quickbooks.payment</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>accounting</artifactId>
         </dependency>
         <!-- </editor-fold> -->
@@ -180,11 +180,6 @@
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
         </dependency>
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <scope>runtime</scope>
-        </dependency>
         <!-- </editor-fold> END JDBC Drivers -->
 
         <!-- </editor-fold> END Database -->
@@ -230,11 +225,6 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.github.javafaker</groupId>
-            <artifactId>javafaker</artifactId>
             <scope>test</scope>
         </dependency>
 

@@ -18,5 +18,6 @@
         <module>web-app</module>
         <module>models</module>
         <module>accounting</module>
+        <module>frontend</module>
     </modules>
 </project>
