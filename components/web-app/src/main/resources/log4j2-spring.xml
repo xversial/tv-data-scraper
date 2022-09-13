@@ -7,9 +7,9 @@
         </Console>
     </Appenders>
     <Loggers>
-        <Logger name="com.duvallwifi.hotspotportal" level="TRACE"/>
-        <Logger name="com.duvallwifi.hotspot" level="TRACE"/>
-        <Logger name="com.duvallwifi" level="TRACE"/>
+        <Logger name="com.vionox.tools.tvscraper" level="TRACE"/>
+        <Logger name="com.vionox.tools" level="TRACE"/>
+        <Logger name="com.vionox" level="TRACE"/>
 
         <Logger name="org.springframework.orm" level="WARN"/>
         <Logger name="org.springframework.beans.factory" level="INFO"/>

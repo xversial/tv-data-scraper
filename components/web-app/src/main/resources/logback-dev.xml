@@ -7,9 +7,9 @@
         </encoder>
     </appender>
     <springProfile name="dev">
-        <logger name="com.duvallwifi" level="TRACE"/>
+        <logger name="com.vionox" level="TRACE"/>
     </springProfile>
-    <logger name="com.duvallwifi" level="TRACE"/>
+    <logger name="com.vionox" level="TRACE"/>
     <root level="INFO">
         <appender-ref ref="Console"/>
     </root>
