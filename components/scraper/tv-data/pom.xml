@@ -12,12 +12,19 @@
     <artifactId>tv-data</artifactId>
 
     <dependencies>
-        <!-- <editor-fold desc="Logging"> -->
+        <!-- <editor-fold desc="SLF4j"> -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
         </dependency>
-        <!-- </editor-fold> END Logging -->
+        <!-- </editor-fold> -->
+
+        <!-- <editor-fold desc="Webpage Scraping"> -->
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+        </dependency>
+        <!-- </editor-fold> -->
     </dependencies>
 
 </project>
