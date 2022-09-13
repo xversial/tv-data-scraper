@@ -3,7 +3,6 @@ package com.vionox.tools.tvscraper.scraper.model.plotpoint;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import org.slf4j.Logger;
@@ -13,7 +12,6 @@ import org.slf4j.LoggerFactory;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@RequiredArgsConstructor
 @SuperBuilder
 public class FrequencyPlotPoint
 {
