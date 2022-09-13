@@ -76,6 +76,11 @@ public class UserDto
         this.lot = lot;
     }
 
+    public void setLot(final int lot)
+    {
+        this.lot = String.valueOf(lot);
+    }
+
     public String getPassword() {
         return password;
     }
