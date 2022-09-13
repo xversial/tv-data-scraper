@@ -100,12 +100,6 @@ public class WebMVCConfig implements WebMvcConfigurer,  ApplicationContextAware
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(localeChangeInterceptor());
     }
-/*
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/resources/**", "/css/**", "/js/**", "/img/**", "/static/**")
-                .addResourceLocations("/WEB-INF/resources/", "/WEB-INF/css/", "/static/");
-    }*/
 
     @Override
     @Description("Custom Conversion Service")
