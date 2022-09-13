@@ -4,14 +4,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.duvallwifi.quickbooks.payment</groupId>
-        <artifactId>quickbooks-app-deployment</artifactId>
+        <groupId>com.vionox.tools.tvscraper</groupId>
+        <artifactId>tv-scraper-deployment</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>quickbooks-app-tomcat-war</artifactId>
+    <artifactId>tv-scraper-tomcat-war</artifactId>
 
-    <name>quickbooks-app-tomcat-war</name>
+    <name>tv-scraper-tomcat-war</name>
     <description>Quickbooks App WAR</description>
     <packaging>war</packaging>
 
@@ -20,7 +20,7 @@
         <!-- <editor-fold desc="Project Module dependencies"> -->
 
         <dependency>
-            <groupId>com.duvallwifi.quickbooks.payment</groupId>
+            <groupId>com.vionox.tools.tvscraper</groupId>
             <artifactId>web-app</artifactId>
         </dependency>
 

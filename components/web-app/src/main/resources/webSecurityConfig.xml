@@ -90,12 +90,12 @@
         <beans:constructor-arg name="strength" value="12" />
     </beans:bean>
     <beans:bean id="authenticationSuccessHandler"
-    class="com.duvallwifi.quickbooks.payment.accounting.handlers.CustomAuthenticationSuccessHandler"/>
+    class="com.vionox.tools.tvscraper.accounting.handlers.CustomAuthenticationSuccessHandler"/>
     <beans:bean id="authenticationFailureHandler"
-    class="com.duvallwifi.quickbooks.payment.accounting.handlers.CustomAuthenticationFailureHandler"/>
+    class="com.vionox.tools.tvscraper.accounting.handlers.CustomAuthenticationFailureHandler"/>
 
     <beans:bean id="userDetailsService"
-                class="com.duvallwifi.quickbooks.payment.accounting.service.MyUserDetailsService"/>
+                class="com.vionox.tools.tvscraper.accounting.service.MyUserDetailsService"/>
     <beans:bean id="csrfMatcher" class="org.springframework.security.web.util.matcher.OrRequestMatcher">
         <beans:constructor-arg>
             <util:list value-type="org.springframework.security.web.util.matcher.RequestMatcher">
@@ -115,7 +115,7 @@
         </beans:constructor-arg>
     </beans:bean>
     <beans:bean id="customAccessDeniedHandler"
-                class="com.duvallwifi.quickbooks.payment.accounting.handlers.CustomAccessDeniedHandler"/>
+                class="com.vionox.tools.tvscraper.accounting.handlers.CustomAccessDeniedHandler"/>
 
     <!--    <beans:bean id="customAuthenticationProvider"-->
 <!--    class="com.duvallwifi.hotspot.auth.CustomAuthenticationProvider" depends-on="userDetailsService">-->
