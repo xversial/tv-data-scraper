@@ -91,7 +91,8 @@ public class UserService implements IUserService
         user.setPassword(passwordEncoder.encode(accountDto.getPassword()));
         user.setEmail(accountDto.getEmail());
 //        user.setUsing2FA(accountDto.isUsing2FA());
-        user.setRoles(this.defaultRegistrationRoles());
+//        user.setRoles(this.defaultRegistrationRoles());
+        user.setRoles(this.activatedRoles());
         return userRepository.save(user);
     }
 
