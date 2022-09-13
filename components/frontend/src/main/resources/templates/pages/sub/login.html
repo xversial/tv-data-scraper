@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+</head>
+<body>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<div th:fragment="login">
+    <h2 class="font-weight-bold text-5 mb-0" th:text="#{login.title_heading}">Login</h2>
+    <form class="needs-validation" id="frmSignIn" method="post" th:action="@{/login/process}">
+
+        <div class="row" th:if="${errorMessage}">
+            <div th:if="${errorMessage}" class="alert alert-danger alert-dismissible" role="alert">
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <strong><i class="fas fa-exclamation-triangle"></i><span th:text="#{login.validation.error.title}">Oh snap!</span></strong>
+                <ul>
+<!--                    <li th:each="err : ${validationErrors.getAllErrors()}" th:text="${err.getDefaultMessage()}">Inform your username.</li>-->
+                    <li th:text="${errorMessage}">Error placeholder.</li>
+                </ul>
+            </div>
+        </div>
+
+<!--        <sec:csrfmetatags />-->
+<!--        <input-->
+<!--                type="hidden"-->
+<!--                th:name="${_csrf.parameterName}"-->
+<!--                th:value="${_csrf.token}" />-->
+        <div class="row">
+            <div class="form-group col">
+                <label class="form-label text-color-dark text-3" th:text="#{login.fields.email}">Email address <span class="text-color-danger">*</span></label>
+                <input class="form-control form-control-lg text-4" required type="text" value="test" name="username">
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col">
+                <label class="form-label text-color-dark text-3" th:text="#{login.fields.password}">Password <span
+                        class="text-color-danger">*</span></label>
+                <input class="form-control form-control-lg text-4" required type="password" value="test" name="password">
+            </div>
+        </div>
+        <div class="row justify-content-between">
+            <div class="form-group col-md-auto">
+                <div class="custom-control custom-checkbox">
+                    <input class="custom-control-input" id="rememberme" type="checkbox">
+                    <label class="form-label custom-control-label cur-pointer text-2" for="rememberme" th:text="#{login.fields.remember}">Remember
+                        Me</label>
+                </div>
+            </div>
+            <div class="form-group col-md-auto">
+                <a class="text-decoration-none text-color-dark text-color-hover-primary font-weight-semibold text-2"
+                   href="#" th:text="#{login.fields.forgot_password}">Forgot Password?</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col">
+                <button class="btn btn-dark btn-modern w-100 text-uppercase rounded-0 font-weight-bold text-3 py-3"
+                        data-loading-text="Loading..."
+                        type="submit" th:text="#{login.submit}">Login
+                </button>
+
+                <div class="divider">
+                    <span class="bg-light px-4 position-absolute left-50pct top-50pct transform3dxy-n50" th:text="#{login.alternative.or}">or</span>
+                </div>
+                <a class="btn btn-primary-scale-2 btn-modern w-100 text-transform-none rounded-0 font-weight-bold align-items-center d-inline-flex justify-content-center text-3 py-3"
+                   data-loading-text="Loading..." th:text="#{login.social.facebook.submit}"
+                   href="#"><i class="fab fa-facebook text-5 me-2"></i> Login With Facebook</a>
+
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

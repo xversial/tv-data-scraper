@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" th:lang="${#locale.language}" th:xmllang="${#locale.language}">
+<head>
+</head>
+<body>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<div th:fragment="register">
+    <h2 class="font-weight-bold text-5 mb-0">Register</h2>
+    <form id="frmSignUp" method="post" th:action="@{/register}">
+
+        <div class="row" th:if="${validationErrors}">
+            <div th:if="${validationErrors}" class="alert alert-danger alert-dismissible" role="alert">
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <strong><i class="fas fa-exclamation-triangle"></i><span th:text="#{unactivated.redeem.validation.error.title}">Oh snap!</span></strong>
+                <ul>
+                    <li th:each="err : ${validationErrors.getAllErrors()}" th:text="${err.getDefaultMessage()}">Inform your username.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-lg-6">
+                <label class="form-label text-color-dark text-3">First Name</label>
+                <span class="text-color-danger">*</span>
+                <input type="text" value="" th:value="${userInput?.firstName}"
+                       data-msg-required="Please enter your name."
+                       maxlength="100"
+                       class="form-control form-control-lg text-4" name="firstName" required>
+            </div>
+            <div class="form-group col-lg-6">
+                <label class="form-label text-color-dark text-3">Last Name</label>
+                <span class="text-color-danger">*</span>
+                <input type="text" value="" th:value="${userInput?.lastName}"
+                       data-msg-required="Please enter your name."
+                       maxlength="100"
+                       class="form-control form-control-lg text-4" name="lastName" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col">
+                <label class="form-label text-color-dark text-3">Lot Number</label>
+                <span class="text-color-danger">*</span>
+                <input type="text" value="" th:value="${userInput?.lot}"
+                       data-msg-required="Please enter your lot number."
+                       maxlength="100"
+                       class="form-control form-control-lg text-4" name="lot" required>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col">
+                <label class="form-label text-color-dark text-3">Email Address</label>
+                <span class="text-color-danger">*</span>
+                <input class="form-control form-control-lg text-4" type="email" value="" name="email"
+                       data-msg-required="Please enter your email address." data-msg-email="Please enter a valid email address."
+                       maxlength="100" th:value="${userInput?.email}"
+                       required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col">
+                <label class="form-label text-color-dark text-3">Password</label>
+                <span class="text-color-danger">*</span>
+                <input class="form-control form-control-lg text-4" required type="password" value="" name="password">
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col">
+                <label class="form-label text-color-dark text-3">Verify Password</label>
+                <span class="text-color-danger">*</span>
+                <input class="form-control form-control-lg text-4" required type="password" value="" name="matchingPassword">
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col">
+                <p class="text-2 mb-2">Your personal data will be used to support your experience throughout this
+                    website, to manage access to your account, and for other purposes described in our <a class="text-decoration-none"
+                                                                                                          href="#">privacy
+                        policy.</a></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col">
+                <button class="btn btn-dark btn-modern w-100 text-uppercase rounded-0 font-weight-bold text-3 py-3"
+                        data-loading-text="Loading..."
+                        type="submit">Register
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

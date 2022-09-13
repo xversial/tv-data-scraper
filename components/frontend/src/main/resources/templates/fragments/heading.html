@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!--suppress XmlDuplicatedId -->
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+</head>
+<body>
+<header th:fragment="heading" id="header" class="header-effect-shrink" data-plugin-options="{'stickyEnabled': true, 'stickyEffect': 'shrink', 'stickyEnableOnBoxed': false, 'stickyEnableOnMobile': false, 'stickyStartAt': 70, 'stickyChangeLogo': false, 'stickyHeaderContainerHeight': 70}">
+    <div class="header-body border-top-0 box-shadow-none">
+        <div class="header-container header-container-md container">
+            <div class="header-row">
+                <div class="header-column">
+                    <div class="header-row">
+                        <div class="header-logo">
+                            <a th:href="@{/}"><img alt="Porto" width="200" height="auto" data-sticky-width="200" data-sticky-height="auto" data-sticky-top="0" th:src="@{/img/logo/duvallwifilogo.webp}"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-column justify-content-end">
+                    <div class="header-row">
+
+                        <div th:replace="fragments/partial/navigation :: header-nav"></div>
+<!--                        <div th:if="${true}">-->
+<!--                            <div th:replace="${true} ? ~{fragments/partial/logged :: logged} : _"></div>-->
+                        <div sec:authorize="isAuthenticated()" th:replace="fragments/partial/logged :: logged"></div>
+
+<!--                        </div>-->
+                        <div th:if="${false}">
+                            <div th:replace="fragments/partial/navigation :: header-nav-features"></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<header th:fragment="heading-non-stick" id="header" data-plugin-options="{'stickyEnabled': false}">
+    <div class="header-body border border-top-0 border-end-0 border-start-0">
+        <div class="header-container container py-2">
+            <div class="header-row">
+                <div class="header-column">
+                    <div class="header-row">
+                        <p class="mb-0 text-dark"><strong th:text="#{header.non-sticky.call-to-action.contact}">Get in touch!</strong>
+                            <a th:href="#{phone.link}"><span th:text="#{phone.text}">(123) 456-789</span></a>
+                            <span class="d-none d-sm-inline-block ps-1"> |
+                                <a href="#" th:href="#{email.link}" th:text="#{email.text}">mail@domain.com</a>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+                <div class="header-column justify-content-end">
+                    <div class="header-row">
+                        <ul class="header-social-icons social-icons me-2">
+                            <li class="social-icons-facebook" th:if="${false}"><a href="http://www.facebook.com/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                            <li class="social-icons-twitter"><a href="https://discord.gg/8kFsRSSc6y" class="no-footer-css" target="_blank" title="Discord"><i class="fa-brands fa-discord"></i></a></li>
+                            <li class="social-icons-twitter" th:if="${false}"><a href="http://www.twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a></li>
+                            <li class="social-icons-linkedin" th:if="${false}"><a href="http://www.linkedin.com/" target="_blank" title="Linkedin"><i class="fab fa-linkedin-in"></i></a></li>
+                        </ul>
+                        <div class="header-nav-features">
+                            <div class="header-nav-features-search-reveal-container">
+                                <div class="header-nav-feature header-nav-features-search header-nav-features-search-reveal d-inline-flex">
+                                    <a href="#" class="header-nav-features-search-show-icon d-inline-flex text-decoration-none"><i class="fas fa-search header-nav-top-icon"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header-nav-features header-nav-features-no-border p-static">
+        <div class="header-nav-feature header-nav-features-search header-nav-features-search-reveal header-nav-features-search-reveal-big-search header-nav-features-search-reveal-big-search-full">
+            <div class="container">
+                <div class="row h-100 d-flex">
+                    <div class="col h-100 d-flex">
+                        <form role="search" class="d-flex h-100 w-100" action="page-search-results.html" method="get">
+                            <div class="big-search-header input-group">
+                                <input class="form-control text-1" id="headerSearch" name="q" type="search" value="" placeholder="Type and hit enter...">
+                                <a href="#" class="header-nav-features-search-hide-icon"><i class="fas fa-times header-nav-top-icon"></i></a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+</body>
+</html>

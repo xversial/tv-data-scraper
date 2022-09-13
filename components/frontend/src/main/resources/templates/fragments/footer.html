@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" th:lang="${#locale.language}" th:xmllang="${#locale.language}">
+<head>
+</head>
+<body>
+<div th:fragment="placeholder"></div>
+
+<footer th:fragment="footer" id="footer" class="footer-texts-more-lighten">
+    <div class="container">
+        <div class="row py-4 my-5">
+            <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
+                <h5 class="text-4 text-color-light mb-3">CONTACT INFO</h5>
+                <ul class="list list-unstyled">
+                    <li class="pb-1 mb-2">
+                        <span class="d-block font-weight-normal line-height-1 text-color-light">ADDRESS</span>
+                        1234 Street Name, City, State, USA
+                    </li>
+                    <li class="pb-1 mb-2">
+                        <span class="d-block font-weight-normal line-height-1 text-color-light">PHONE</span>
+                        <a th:href="#{phone.link}" th:text="#{phone.text}" href="tel:+13606262946">Toll Free (360) 626-2946</a>
+                    </li>
+                    <li class="pb-1 mb-2">
+                        <span class="d-block font-weight-normal line-height-1 text-color-light">EMAIL</span>
+                        <a href="mailto:mail@example.com" th:href="#{email.link}" th:text="#{email.text}">mail@example.com</a>
+                    </li>
+                    <li class="pb-1 mb-2">
+                        <span class="d-block font-weight-normal line-height-1 text-color-light">WORKING DAYS/HOURS </span>
+                        <span th:text="#{hours}">24/7</span>
+                    </li>
+                </ul>
+                <ul class="social-icons social-icons-clean-with-border social-icons-medium">
+                    <li class="social-icons-twitter mx-2">
+                        <a href="https://discord.gg/8kFsRSSc6y" class="no-footer-css" target="_blank" title="Discord"><i class="fa-brands fa-discord"></i></a>
+                    </li>
+                    <li class="social-icons-instagram" th:if="${false}">
+                        <a href="http://www.instagram.com/" class="no-footer-css" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    </li>
+                    <li class="social-icons-twitter mx-2" th:if="${false}">
+                        <a href="http://www.twitter.com/" class="no-footer-css" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    </li>
+                    <li class="social-icons-facebook" th:if="${false}">
+                        <a href="http://www.facebook.com/" class="no-footer-css" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-6 col-lg-2 mb-5 mb-lg-0" th:if="${false}">
+                <h5 class="text-4 text-color-light mb-3">USEFUL LINKS</h5>
+                <ul class="list list-unstyled mb-0">
+                    <li class="mb-0"><a th:href="@{/contact-us-1.html}">Help Center</a></li>
+                    <li class="mb-0"><a th:href="@{/about-us.html}">About Us</a></li>
+                    <li class="mb-0"><a th:href="@{/contact-us.html}">Contact Us</a></li>
+                    <li class="mb-0"><a th:href="@{/page-careers.html}">Careers</a></li>
+                    <li class="mb-0"><a th:href="@{/blog-grid-4-columns.html}">Blog</a></li>
+                    <li class="mb-0"><a th:href="@{/#}">Our Location</a></li>
+                    <li class="mb-0"><a th:href="@{/#}">Privacy Policy</a></li>
+                    <li class="mb-0"><a th:href="@{/sitemap.html}">Sitemap</a></li>
+                </ul>
+            </div>
+            <div class="col-md-6 col-lg-4 mb-5 mb-md-0" th:if="${false}">
+                <h5 class="text-4 text-color-light mb-3">RECENT NEWS</h5>
+                <article class="mb-3">
+                    <a th:href="@{/blog-post.html}" class="text-color-light text-3-5">Why should I buy a Web Template?</a>
+                    <p class="line-height-2 mb-0"><a th:href="@{/#}">Nov 25, 2020</a> in <a th:href="@{/#}">Design,</a> <a th:href="@{/#}">Coding</a></p>
+                </article>
+                <article class="mb-3">
+                    <a th:href="@{/blog-post.html}" class="text-color-light text-3-5">Creating Amazing Website with Porto</a>
+                    <p class="line-height-2 mb-0"><a th:href="@{/#}">Nov 25, 2020</a> in <a th:href="@{/#}">Design,</a> <a th:href="@{/#}">Coding</a></p>
+                </article>
+                <article>
+                    <a th:href="@{/blog-post.html}" class="text-color-light text-3-5">Best Practices for Top UI Design</a>
+                    <p class="line-height-2 mb-0"><a th:href="@{/#}">Nov 25, 2020</a> in <a th:href="@{/#}">Design,</a> <a th:href="@{/#}">Coding</a></p>
+                </article>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <h5 class="text-4 text-color-light mb-3" th:text="#{newsletter.subscribe.heading}">SUBSCRIBE NEWSLETTER</h5>
+                <p class="mb-2" th:text="#{newsletter.subscribe.body}">Get all the latest information on events, sales and offers. Sign up for newsletter:</p>
+                <div class="alert alert-success d-none" id="newsletterSuccess">
+                    <strong>Success!</strong> You've been added to our email list.
+                </div>
+                <div class="alert alert-danger d-none" id="newsletterError"></div>
+                <form id="newsletterForm" class="form-style-5 opacity-10" action="php/newsletter-subscribe.php" method="POST">
+                    <div class="row">
+                        <div class="form-group col">
+                            <input class="form-control"
+                                   th:placeholder="#{newsletter.field.email.placeholder}" placeholder="Email Address"
+                                   name="newsletterEmail" id="newsletterEmail" type="text" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col">
+                            <button class="btn btn-primary btn-rounded btn-px-4 btn-py-2 font-weight-bold" type="submit" th:text="#{newsletter.subscribe.button}">SUBSCRIBE</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="footer-copyright footer-copyright-style-2 pt-4 pb-5">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="mb-0">Duvall Wi-Fi © 2022. All Rights Reserved.</p>
+                    <p class="mb-0">Built from the ground up by Brandon to give you the best experience possible.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

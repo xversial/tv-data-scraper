@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" th:lang="${#locale.language}" th:xmllang="${#locale.language}">
+<head th:replace="fragments/head :: common_header(~{::title},~{},~{},~{})">
+    <title th:text="#{error.error_500.title}">Login</title>
+</head>
+<body data-plugin-page-transition>
+<div th:replace="fragments/heading :: heading-non-stick"></div>
+<div class="body">
+    <div th:fragment="denied-main" role="main" class="main" style="min-height: calc(100vh - 393px);">
+        <div th:replace="pages/errors :: main-container"></div>
+    </div>
+    <div th:replace="fragments/footer :: footer"></div>
+</div>
+<div th:replace="fragments/javascript :: javascript"></div>
+</body>
+</html>

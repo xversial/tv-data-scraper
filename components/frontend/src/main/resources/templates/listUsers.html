@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{page.title.dev.list.users}">Student List</title>
+</head>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+<script>
+    $(document).ready(function() {
+        $.ajax({
+            url : "/spring-thymeleaf/js",
+        });
+    });
+</script>
+<body>
+<h1 th:text="#{page.heading.dev.list.users}">Student List</h1>
+<table border="1">
+    <thead>
+    <tr>
+        <th th:text="#{account.field.name.first}" />
+        <th th:text="#{account.field.name.last}" />
+        <th th:text="#{account.field.email}" />
+        <th th:text="#{account.field.id}" />
+        <th th:text="lot" />
+        <th th:text="active" />
+        <th th:text="first" />
+        <th th:text="last" />
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="student, iStat : ${students}" th:style="${iStat.odd}? 'font-weight: bold;'" th:alt-title="${iStat.even}? 'even' : 'odd'">
+<!--        <td th:text="${student.id}" />-->
+        <td th:text="${student.firstName}" />
+        <td th:text="${student.lastName}" />
+        <td th:text="${student.email}" />
+        <td th:text="${iStat.index}" />
+        <td th:text="${student.lot}" />
+        <td th:text="${student.active}" />
+        <td th:text="${iStat.last}" />
+    </tr>
+    </tbody>
+</table>
+<div>
+    <p>
+        <a th:href="@{/}" th:text="#{page.link.home}" />
+    </p>
+</div>
+</body>
+</html>

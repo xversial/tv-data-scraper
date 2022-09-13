@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" th:lang="${#locale.language}" th:xmllang="${#locale.language}">
+<head th:replace="fragments/head :: common_header(~{::title},~{},~{},~{})">
+    <title>Register</title>
+</head>
+<body data-plugin-page-transition>
+<div th:replace="fragments/heading :: heading"></div>
+<div class="body">
+    <div th:replace="pages/register :: main"></div>
+    <div th:replace="fragments/footer :: footer"></div>
+</div>
+<div th:replace="fragments/javascript :: javascript"></div>
+</body>
+</html>

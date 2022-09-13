@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" th:lang="${#locale.language}" th:xmllang="${#locale.language}">
+<head>
+</head>
+<body>
+<div th:fragment="javascript">
+    <!-- Vendor -->
+    <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+    <script th:src="@{/vendor/jquery.appear/jquery.appear.min.js}"></script>
+    <script th:src="@{/vendor/jquery.easing/jquery.easing.min.js}"></script>
+    <script th:src="@{/vendor/jquery.cookie/jquery.cookie.min.js}"></script>
+    <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/vendor/jquery.validation/jquery.validate.min.js}"></script>
+    <script th:src="@{/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js}"></script>
+    <script th:src="@{/vendor/jquery.gmap/jquery.gmap.min.js}"></script>
+    <script th:src="@{/vendor/lazysizes/lazysizes.min.js}"></script>
+    <script th:src="@{/vendor/isotope/jquery.isotope.min.js}"></script>
+    <script th:src="@{/vendor/owl.carousel/owl.carousel.min.js}"></script>
+    <script th:src="@{/vendor/magnific-popup/jquery.magnific-popup.min.js}"></script>
+    <script th:src="@{/vendor/vide/jquery.vide.min.js}"></script>
+    <script th:src="@{/vendor/vivus/vivus.min.js}"></script>
+    <!-- Theme Base, Components and Settings -->
+    <script th:src="@{/js/theme.js}"></script>
+
+    <!-- Revolution Slider Scripts -->
+    <script th:src="@{/vendor/rs-plugin/js/jquery.themepunch.tools.min.js}"></script>
+    <script th:src="@{/vendor/rs-plugin/js/jquery.themepunch.revolution.min.js}"></script>
+    <!-- Circle Flip Slideshow Script -->
+    <script th:src="@{/vendor/circle-flip-slideshow/js/jquery.flipshow.min.js}"></script>
+    <!-- Current Page Views -->
+    <script th:src="@{/js/views/view.home.js}"></script>
+
+    <!-- Theme Custom -->
+    <script th:src="@{/js/custom.js}"></script>
+    <!-- Theme Initialization Files -->
+    <script th:src="@{/js/theme.init.js}"></script>
+</div>
+</body>
+</html>

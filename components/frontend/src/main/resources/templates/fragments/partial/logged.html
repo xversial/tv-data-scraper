@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+</head>
+<body>
+<div class="header-nav-features header-nav-features-no-border header-nav-features-lg-show-border order-1 order-lg-2"
+     th:fragment="logged" th:with="user = ${@userRepository.findByEmail(#authentication.name)}">
+    <div class="header-nav-feature header-nav-features-user header-nav-features-user-logged d-inline-flex mx-2 pe-2"
+         id="headerAccount">
+        <a class="header-nav-features-toggle" href="#">
+            <i class="far fa-user"></i> <!--<span sec:authentication="name"></span>--> <span th:text="${user.getFirstNameDisplay()}"></span> <!--<span th:text="${user.getLastName()}"></span>--><!--<span th:text="${#authentication.getPrincipal().getUser()}"> DOE</span>-->
+        </a>
+        <div class="header-nav-features-dropdown header-nav-features-dropdown-mobile-fixed header-nav-features-dropdown-force-right"
+             id="headerTopUserDropdown">
+            <div class="row">
+                <div class="col-8">
+                    <p class="mb-0 pb-0 text-2 line-height-1 pt-1">Hello,</p>
+                    <p><strong class="text-color-dark text-4"><span th:text="${user.getName()}"></span></strong></p>
+                </div>
+                <div class="col-4">
+                    <div class="d-flex justify-content-end">
+                        <img alt="" class="rounded-circle" height="40" th:src="@{/img/avatars/avatar.jpg}" width="40">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <ul class="nav nav-list-simple flex-column text-3">
+                        <li class="nav-item"><a class="nav-link" th:href="@{/manage-profile}">My Profile</a></li>
+                        <li class="nav-item" th:if="${false}"><a class="nav-link" th:href="@{/orders}">My Orders</a></li>
+                        <li class="nav-item"><a class="nav-link border-bottom-0" th:href="@{/logout}">Log Out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

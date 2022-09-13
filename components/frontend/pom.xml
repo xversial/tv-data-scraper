@@ -25,6 +25,17 @@
             <artifactId>models</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.duvallwifi.hotspot</groupId>
+            <artifactId>porto</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.duvallwifi.hotspot</groupId>
+            <artifactId>utils</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
         <!-- </editor-fold> END Project Module dependencies -->
 
         <!-- <editor-fold desc="Spring dependencies"> -->

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" th:lang="${#locale.language}" th:xmllang="${#locale.language}">
+<head>
+</head>
+<body>
+<div th:fragment="placeholder"></div>
+<div th:fragment="main" role="main" class="main">
+    <section class="page-header page-header-modern bg-color-light-scale-1 page-header-lg">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 align-self-center p-static order-2 text-center">
+                    <h1 class="font-weight-bold text-dark" th:text="#{unactivated.title_heading}">Login</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container pt-3 pb-2">
+        <div class="row pt-2">
+<!--            <div th:replace="pages/sub/login :: login"></div>-->
+<!--            <h1>Please activate your account</h1>-->
+            <div class="col">
+
+            <h2 class="font-weight-normal text-7 mb-2" th:text="#{unactivated.heading.main(${user.getFirstNameDisplay()})}">
+            </h2>
+
+                    <p class="lead" th:text="#{unactivated.lead(${user.getFirstNameDisplay()})}">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Curabitur pellentesque neque eget diam posuere porta.
+                        Quisque ut nulla at nunc <a href="#">vehicula</a> lacinia.
+                        Proin adipiscing porta tellus, ut feugiat nibh adipiscing sit amet.
+                        In eu justo a felis faucibus ornare vel id metus.
+                        Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
+                        In eu libero ligula.</p>
+                    <img class="float-start img-fluid" width="300" height="211" th:src="@{/img/device.png}" alt="Device" />
+                <!--<p>Hi
+                    <span th:text="${user.getFirstNameDisplay()}"></span>,
+                    In order to proceed, you'll need to activate your account either with a voucher or manually by an administrator.
+                </p>-->
+                    <p th:text="#{unactivated.body.p}">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Curabitur pellentesque neque eget diam posuere porta.
+                        Quisque ut nulla at nunc <a href="#">vehicula</a> lacinia.
+                        Proin adipiscing porta tellus, ut feugiat nibh adipiscing sit amet.
+                        In eu justo a felis faucibus ornare vel id metus.
+                        Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
+                        In eu libero ligula. Fusce eget metus lorem, ac viverra leo.
+                        Nullam convallis, arcu vel pellentesque sodales, nisi est varius diam, ac ultrices sem ante quis sem.
+                        Proin ultricies volutpat sapien, nec scelerisque ligula mollis lobortis.
+                    </p>
+
+                <form class="needs-validation" id="frmSignIn" method="post" th:action="@{/unactivated/redeem-voucher}">
+
+                    <div class="row">
+
+                        <div th:if="${validationErrors}" class="alert alert-danger alert-dismissible" role="alert">
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            <strong><i class="fas fa-exclamation-triangle"></i><span th:text="#{unactivated.redeem.validation.error.title}">Oh snap!</span></strong>
+                            <ul>
+                                <li th:each="err : ${validationErrors.getAllErrors()}" th:text="${err.getDefaultMessage()}">Inform your username.</li>
+                            </ul>
+                        </div>
+
+                        <div class="form-group col">
+                            <label class="form-label text-color-dark text-3" th:text="#{unactivated.fields.voucher}">Voucher code </label><span class="text-color-danger"> * </span>
+                            <input class="form-control form-control-lg text-4"
+                                   th:placeholder="#{unactivated.fields.voucher.placeholder}"
+                                   required type="text" value="" th:value="*{voucherCode} ?: _" name="voucherCode">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col">
+                            <input type="submit"
+                                   th:value="#{unactivated.fields.submit.value}"
+                                   value="Submit Form" class="btn btn-primary"
+                                   data-loading-text="Loading...">
+                        </div>
+                    </div>
+                </form>
+        </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
