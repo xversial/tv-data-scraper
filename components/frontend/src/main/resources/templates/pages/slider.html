@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en" th:lang="${#locale.language}" th:xmllang="${#locale.language}">
 <head>
+    <title>Slider</title>
 </head>
 <body data-plugin-page-transition>
 <div th:fragment="main" role="main" class="main">
@@ -9,7 +10,7 @@
              data-plugin-options="{'delay': 9000, 'gridwidth': 1170, 'gridheight': 670, 'disableProgressBar': 'on', 'responsiveLevels': [4096,1200,992,500], 'parallax': { 'type': 'scroll', 'origo': 'enterpoint', 'speed': 1000, 'levels': [2,3,4,5,6,7,8,9,12,50], 'disable_onmobile': 'on' }, 'navigation' : {'arrows': { 'enable': true }, 'bullets': {'enable': true, 'style': 'bullets-style-1', 'h_align': 'center', 'v_align': 'bottom', 'space': 7, 'v_offset': 70, 'h_offset': 0}}}">
             <ul>
                 <li data-transition="fade">
-                    <img src="img/slides/slide-bg.jpg" th:src="@{/img/slides/slide-bg.jpg}"
+                    <img th:src="@{/img/slides/slide-bg.jpg}" src=""
                          alt=""
                          data-bgposition="center center"
                          data-bgfit="cover"
@@ -22,7 +23,7 @@
                          data-y="top"
                          data-width="['auto']"
                          data-height="['auto']"
-                         data-basealign="slide"><img src="img/slides/slide-devices.jpg" th:src="@{/img/slides/slide-devices.jpg}" alt=""></div>
+                         data-basealign="slide"><img th:src="@{/img/slides/slide-devices.jpg}" src="" alt=""></div>
                     <div class="tp-caption tp-resizeme"
                          data-frames='[{"delay":1500,"speed":2000,"frame":"0","from":"opacity:0;x:-100%;y:-100%;","to":"o:1;x:0;y:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
                          data-type="image"
@@ -30,7 +31,7 @@
                          data-y="center"
                          data-width="['auto']"
                          data-height="['auto']"
-                         data-basealign="slide"><img src="img/slides/slide-laptop.jpg" th:src="@{/img/slides/slide-laptop.jpg}" alt=""></div>
+                         data-basealign="slide"><img th:src="@{/img/slides/slide-laptop.jpg}" src="" alt=""></div>
                     <div class="tp-caption tp-resizeme rs-parallaxlevel-7"
                          data-frames='[{"delay":2500,"speed":1500,"frame":"0","from":"opacity:0;x:-50%;y:-50%;","to":"opacity:1;x:0;y:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
                          data-type="image"
@@ -38,13 +39,13 @@
                          data-y="-700"
                          data-width="['auto']"
                          data-height="['auto']"
-                         data-basealign="slide"><img src="img/slides/slide-parallax-porto-symbol.png" th:src="@{/img/slides/slide-parallax-porto-symbol.png}" alt=""></div>
+                         data-basealign="slide"><img th:src="@{/img/slides/slide-parallax-porto-symbol.png}" src="" alt=""></div>
                     <div class="tp-caption"
                          data-x="center" data-hoffset="['-150','-150','-150','-240']"
                          data-y="center" data-voffset="['-50','-50','-50','-75']"
                          data-start="1000"
                          data-transform_in="x:[-300%];opacity:0;s:500;"
-                         data-transform_idle="opacity:0.2;s:500;"><img src="img/slides/slide-title-border.png" th:src="@{/img/slides/slide-title-border.png}" alt="">
+                         data-transform_idle="opacity:0.2;s:500;"><img th:src="@{/img/slides/slide-title-border.png}" src="" alt="">
                     </div>
                     <div class="tp-caption text-color-light font-weight-normal"
                          data-x="center"
@@ -58,13 +59,13 @@
                          data-frames='[{"delay":2400,"speed":500,"frame":"0","from":"opacity:0;x:10%;","to":"opacity:1;x:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
                          data-x="center" data-hoffset="['80','80','80','135']"
                          data-y="center" data-voffset="['-33','-33','-33','-55']"><img
-                            src="img/slides/slide-blue-line.png" th:src="@{/img/slides/slide-blue-line.png}" alt=""></div>
+                            th:src="@{/img/slides/slide-blue-line.png}" src="" alt=""></div>
                     <div class="tp-caption"
                          data-x="center" data-hoffset="['150','150','150','240']"
                          data-y="center" data-voffset="['-50','-50','-50','-75']"
                          data-start="1000"
                          data-transform_in="x:[300%];opacity:0;s:500;"
-                         data-transform_idle="opacity:0.2;s:500;"><img src="img/slides/slide-title-border.png" th:src="@{/img/slides/slide-title-border.png}" alt="">
+                         data-transform_idle="opacity:0.2;s:500;"><img th:src="@{/img/slides/slide-title-border.png}" src="" alt="">
                     </div>
                     <div class="tp-caption font-weight-extra-bold text-color-light negative-ls-2"
                          data-frames='[{"delay":1000,"speed":2000,"frame":"0","from":"sX:1.5;opacity:0;fb:20px;","to":"o:1;fb:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
@@ -83,7 +84,7 @@
                     </div>
                 </li>
                 <li class="slide-overlay" data-transition="fade">
-                    <img src="img/slides/slide-bg-2.jpg" th:src="@{/img/slides/slide-bg-2.jpg}"
+                    <img th:src="@{/img/slides/slide-bg-2.jpg}" src=""
                          alt=""
                          data-bgposition="center center"
                          data-bgfit="cover"
@@ -94,7 +95,7 @@
                          data-y="center" data-voffset="['-50','-50','-50','-75']"
                          data-start="1000"
                          data-transform_in="x:[-300%];opacity:0;s:500;"
-                         data-transform_idle="opacity:0.2;s:500;"><img src="img/slides/slide-title-border.png" th:src="@{/img/slides/slide-title-border.png}" alt="">
+                         data-transform_idle="opacity:0.2;s:500;"><img th:src="@{/img/slides/slide-title-border.png}" src="" alt="">
                     </div>
                     <div class="tp-caption text-color-light font-weight-normal"
                          data-x="center"
@@ -109,7 +110,7 @@
                          data-y="center" data-voffset="['-50','-50','-50','-75']"
                          data-start="1000"
                          data-transform_in="x:[300%];opacity:0;s:500;"
-                         data-transform_idle="opacity:0.2;s:500;"><img src="img/slides/slide-title-border.png" th:src="@{/img/slides/slide-title-border.png}" alt="">
+                         data-transform_idle="opacity:0.2;s:500;"><img th:src="@{/img/slides/slide-title-border.png}" src="" alt="">
                     </div>
                     <div class="tp-caption font-weight-extra-bold text-color-light negative-ls-1"
                          data-frames='[{"delay":1000,"speed":2000,"frame":"0","from":"sX:1.5;opacity:0;fb:20px;","to":"o:1;fb:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
@@ -130,7 +131,7 @@
                     </div>
                 </li>
                 <li class="slide-overlay slide-overlay-primary" data-transition="fade">
-                    <img src="img/slides/slide-bg-6.jpg" th:src="@{/img/slides/slide-bg-6.jpg}"
+                    <img th:src="@{/img/slides/slide-bg-6.jpg}" src=""
                          alt=""
                          data-bgposition="center center"
                          data-bgfit="cover"
@@ -141,7 +142,7 @@
                          data-y="center" data-voffset="['-80','-80','-80','-130']"
                          data-start="1000"
                          data-transform_in="x:[-300%];opacity:0;s:500;"
-                         data-transform_idle="opacity:0.2;s:500;"><img src="img/slides/slide-title-border.png" th:src="@{/img/slides/slide-title-border.png}" alt="">
+                         data-transform_idle="opacity:0.2;s:500;"><img th:src="@{/img/slides/slide-title-border.png}" src="" alt="">
                     </div>
                     <div class="tp-caption text-color-light font-weight-normal"
                          data-x="center"
@@ -156,7 +157,7 @@
                          data-y="center" data-voffset="['-80','-80','-80','-130']"
                          data-start="1000"
                          data-transform_in="x:[300%];opacity:0;s:500;"
-                         data-transform_idle="opacity:0.2;s:500;"><img src="img/slides/slide-title-border.png" th:src="@{/img/slides/slide-title-border.png}" alt="">
+                         data-transform_idle="opacity:0.2;s:500;"><img th:src="@{/img/slides/slide-title-border.png}" src="" alt="">
                     </div>
                     <div class="tp-caption font-weight-extra-bold text-color-light"
                          data-frames='[{"delay":1300,"speed":1000,"frame":"0","from":"opacity:0;x:-50%;","to":"opacity:0.7;x:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
@@ -215,9 +216,9 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="get-started text-start text-lg-end">
-                        <a href="#" class="btn btn-dark btn-lg text-3 font-weight-semibold px-4 py-3">Get Started
+                        <a th:href="@{/#}" class="btn btn-dark btn-lg text-3 font-weight-semibold px-4 py-3">Get Started
                             Now</a>
-                        <div class="learn-more">or <a href="index.html">learn more.</a></div>
+                        <div class="learn-more">or <a th:href="@{/index.html}">learn more.</a></div>
                     </div>
                 </div>
             </div>
@@ -252,19 +253,19 @@
                     <span class="cloud"></span>
                     <div class="col-lg-2 ms-lg-auto">
                         <div class="process-image">
-                            <img src="img/home/home-concept-item-1.png" th:src="@{/img/home/home-concept-item-1.png}" alt=""/>
+                            <img th:src="@{/img/home/home-concept-item-1.png}" src="" alt=""/>
                             <strong>Strategy</strong>
                         </div>
                     </div>
                     <div class="col-lg-2">
                         <div class="process-image process-image-on-middle">
-                            <img src="img/home/home-concept-item-2.png" th:src="@{/img/home/home-concept-item-2.png}" alt=""/>
+                            <img th:src="@{/img/home/home-concept-item-2.png}" src="" alt=""/>
                             <strong>Planning</strong>
                         </div>
                     </div>
                     <div class="col-lg-2">
                         <div class="process-image">
-                            <img src="img/home/home-concept-item-3.png" th:src="@{/img/home/home-concept-item-3.png}" alt=""/>
+                            <img th:src="@{/img/home/home-concept-item-3.png}" src="" alt=""/>
                             <strong>Build</strong>
                         </div>
                     </div>
@@ -272,14 +273,14 @@
                         <div class="project-image">
                             <div id="fcSlideshow" class="fc-slideshow">
                                 <ul class="fc-slides">
-                                    <li><a href="portfolio-single-wide-slider.html"><img class="img-fluid"
-                                                                                         src="img/projects/project-home-1.jpg" th:src="@{/img/projects/project-home-1.jpg}"
+                                    <li><a th:href="@{/portfolio-single-wide-slider.html}"><img class="img-fluid"
+                                                                                         th:src="@{/img/projects/project-home-1.jpg}" src=""
                                                                                          alt=""/></a></li>
-                                    <li><a href="portfolio-single-wide-slider.html"><img class="img-fluid"
-                                                                                         src="img/projects/project-home-2.jpg" th:src="@{/img/projects/project-home-2.jpg}"
+                                    <li><a th:href="@{/portfolio-single-wide-slider.html}"><img class="img-fluid"
+                                                                                         th:src="@{/img/projects/project-home-2.jpg}" src=""
                                                                                          alt=""/></a></li>
-                                    <li><a href="portfolio-single-wide-slider.html"><img class="img-fluid"
-                                                                                         src="img/projects/project-home-3.jpg" th:src="@{/img/projects/project-home-3.jpg}"
+                                    <li><a th:href="@{/portfolio-single-wide-slider.html}"><img class="img-fluid"
+                                                                                         th:src="@{/img/projects/project-home-3.jpg}" src=""
                                                                                          alt=""/></a></li>
                                 </ul>
                             </div>
@@ -393,7 +394,7 @@
                         <div class="card-header">
                             <h4 class="card-title m-0">
                                 <a class="accordion-toggle text-color-dark font-weight-bold" data-bs-toggle="collapse"
-                                   data-bs-parent="#accordion" href="#collapseOne">
+                                   data-bs-parent="#accordion" th:href="@{/#collapseOne}">
                                     <i class="icons icon-diamond text-color-primary"></i>
                                     Creative Websites
                                 </a>
@@ -403,7 +404,7 @@
                             <div class="card-body text-2">
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blanorem ipsum
                                     dolor sit amet, consecte.</p>
-                                <p class="mb-0">Adipiscing elit phasellus blanit ma... <a href="#"
+                                <p class="mb-0">Adipiscing elit phasellus blanit ma... <a th:href="@{/#}"
                                                                                           class="d-block text-color-dark font-weight-semibold pt-4">read
                                     more <i class="fas fa-angle-right position-relative top-1 ms-1"></i></a></p>
                             </div>
@@ -413,7 +414,7 @@
                         <div class="card-header">
                             <h4 class="card-title m-0">
                                 <a class="accordion-toggle text-color-dark font-weight-bold" data-bs-toggle="collapse"
-                                   data-bs-parent="#accordion" href="#collapseTwo">
+                                   data-bs-parent="#accordion" th:href="@{/#collapseTwo}">
                                     <i class="icons icon-bubble text-color-primary"></i>
                                     Contact Forms
                                 </a>
@@ -430,7 +431,7 @@
                         <div class="card-header">
                             <h4 class="card-title m-0">
                                 <a class="accordion-toggle text-color-dark font-weight-bold" data-bs-toggle="collapse"
-                                   data-bs-parent="#accordion" href="#collapseThree">
+                                   data-bs-parent="#accordion" th:href="@{/#collapseThree}">
                                     <i class="icons icon-grid text-color-primary"></i>
                                     Portfolio Pages
                                 </a>
@@ -465,28 +466,28 @@
             <div class="owl-carousel owl-theme carousel-center-active-item"
                  data-plugin-options="{'responsive': {'0': {'items': 1}, '476': {'items': 1}, '768': {'items': 5}, '992': {'items': 7}, '1200': {'items': 7}}, 'autoplay': true, 'autoplayTimeout': 3000, 'dots': false}">
                 <div>
-                    <img class="img-fluid" src="img/logos/logo-1.png" th:src="@{/img/logos/logo-1.png}" alt="">
+                    <img class="img-fluid" th:src="@{/img/logos/logo-1.png}" src="" alt="">
                 </div>
                 <div>
-                    <img class="img-fluid" src="img/logos/logo-2.png" th:src="@{/img/logos/logo-2.png}" alt="">
+                    <img class="img-fluid" th:src="@{/img/logos/logo-2.png}" src="" alt="">
                 </div>
                 <div>
-                    <img class="img-fluid" src="img/logos/logo-3.png" th:src="@{/img/logos/logo-3.png}" alt="">
+                    <img class="img-fluid" th:src="@{/img/logos/logo-3.png}" src="" alt="">
                 </div>
                 <div>
-                    <img class="img-fluid" src="img/logos/logo-4.png" th:src="@{/img/logos/logo-4.png}" alt="">
+                    <img class="img-fluid" th:src="@{/img/logos/logo-4.png}" src="" alt="">
                 </div>
                 <div>
-                    <img class="img-fluid" src="img/logos/logo-5.png" th:src="@{/img/logos/logo-5.png}" alt="">
+                    <img class="img-fluid" th:src="@{/img/logos/logo-5.png}" src="" alt="">
                 </div>
                 <div>
-                    <img class="img-fluid" src="img/logos/logo-6.png" th:src="@{/img/logos/logo-6.png}" alt="">
+                    <img class="img-fluid" th:src="@{/img/logos/logo-6.png}" src="" alt="">
                 </div>
                 <div>
-                    <img class="img-fluid" src="img/logos/logo-4.png" th:src="@{/img/logos/logo-4.png}" alt="">
+                    <img class="img-fluid" th:src="@{/img/logos/logo-4.png}" src="" alt="">
                 </div>
                 <div>
-                    <img class="img-fluid" src="img/logos/logo-2.png" th:src="@{/img/logos/logo-2.png}" alt="">
+                    <img class="img-fluid" th:src="@{/img/logos/logo-2.png}" src="" alt="">
                 </div>
             </div>
         </div>
@@ -515,11 +516,11 @@
                                                 </div>
                                                 <div class="col ps-1">
                                                     <h4 class="text-primary text-4"><a class="d-block"
-                                                                                       href="blog-post.html">Lorem ipsum
+                                                                                       th:href="@{/blog-post.html}">Lorem ipsum
                                                         dolor sit amet, consectetur</a></h4>
                                                     <p class="pe-4 mb-0">Lorem ipsum dolor sit amet, consectetur
                                                         adipiscing elit.</p>
-                                                    <a href="/"
+                                                    <a th:href="@{//}"
                                                        class="read-more text-color-dark font-weight-semibold text-2">read
                                                         more
                                                         <i class="fas fa-angle-right position-relative top-1 ms-1"></i></a>
@@ -538,11 +539,11 @@
                                                 </div>
                                                 <div class="col ps-1">
                                                     <h4 class="text-primary text-4"><a class="d-block"
-                                                                                       href="blog-post.html">Lorem ipsum
+                                                                                       th:href="@{/blog-post.html}">Lorem ipsum
                                                         dolor sit amet, consectetur</a></h4>
                                                     <p class="pe-4 mb-0">Lorem ipsum dolor sit amet, consectetur
                                                         adipiscing elit.</p>
-                                                    <a href="/"
+                                                    <a th:href="@{//}"
                                                        class="read-more text-color-dark font-weight-semibold text-2">read
                                                         more
                                                         <i class="fas fa-angle-right position-relative top-1 ms-1"></i></a>
@@ -563,11 +564,11 @@
                                                 </div>
                                                 <div class="col ps-1">
                                                     <h4 class="text-primary text-4"><a class="d-block"
-                                                                                       href="blog-post.html">Lorem ipsum
+                                                                                       th:href="@{/blog-post.html}">Lorem ipsum
                                                         dolor sit amet, consectetur</a></h4>
                                                     <p class="pe-4 mb-0">Lorem ipsum dolor sit amet, consectetur
                                                         adipiscing elit.</p>
-                                                    <a href="/"
+                                                    <a th:href="@{//}"
                                                        class="read-more text-color-dark font-weight-semibold text-2">read
                                                         more
                                                         <i class="fas fa-angle-right position-relative top-1 ms-1"></i></a>
@@ -586,11 +587,11 @@
                                                 </div>
                                                 <div class="col ps-1">
                                                     <h4 class="text-primary text-4"><a class="d-block"
-                                                                                       href="blog-post.html">Lorem ipsum
+                                                                                       th:href="@{/blog-post.html}">Lorem ipsum
                                                         dolor sit amet, consectetur</a></h4>
                                                     <p class="pe-4 mb-0">Lorem ipsum dolor sit amet, consectetur
                                                         adipiscing elit.</p>
-                                                    <a href="/"
+                                                    <a th:href="@{//}"
                                                        class="read-more text-color-dark font-weight-semibold text-2">read
                                                         more
                                                         <i class="fas fa-angle-right position-relative top-1 ms-1"></i></a>
@@ -610,11 +611,11 @@
                                                     </div>
                                                 </div>
                                                 <div class="col ps-1">
-                                                    <h4 class="text-primary text-4"><a href="blog-post.html">Lorem ipsum
+                                                    <h4 class="text-primary text-4"><a th:href="@{/blog-post.html}">Lorem ipsum
                                                         dolor sit amet, consectetur</a></h4>
                                                     <p class="pe-4 mb-0">Lorem ipsum dolor sit amet, consectetur
                                                         adipiscing elit.</p>
-                                                    <a href="/"
+                                                    <a th:href="@{//}"
                                                        class="read-more text-color-dark font-weight-semibold text-2">read
                                                         more
                                                         <i class="fas fa-angle-right position-relative top-1 ms-1"></i></a>
@@ -632,11 +633,11 @@
                                                     </div>
                                                 </div>
                                                 <div class="col ps-1">
-                                                    <h4 class="text-primary text-4"><a href="blog-post.html">Lorem ipsum
+                                                    <h4 class="text-primary text-4"><a th:href="@{/blog-post.html}">Lorem ipsum
                                                         dolor sit amet, consectetur</a></h4>
                                                     <p class="pe-4 mb-0">Lorem ipsum dolor sit amet, consectetur
                                                         adipiscing elit.</p>
-                                                    <a href="/"
+                                                    <a th:href="@{//}"
                                                        class="read-more text-color-dark font-weight-semibold text-2">read
                                                         more
                                                         <i class="fas fa-angle-right position-relative top-1 ms-1"></i></a>
@@ -664,7 +665,7 @@
                                             <div class="testimonial-arrow-down"></div>
                                             <div class="testimonial-author">
                                                 <div class="testimonial-author-thumbnail">
-                                                    <img src="img/clients/client-1.jpg" th:src="@{/img/clients/client-1.jpg}" class="rounded-circle" alt=""/>
+                                                    <img th:src="@{/img/clients/client-1.jpg}" src="" class="rounded-circle" alt=""/>
                                                 </div>
                                                 <p><strong>John Doe</strong><span>Okler</span></p>
                                             </div>
@@ -683,7 +684,7 @@
                                             <div class="testimonial-arrow-down"></div>
                                             <div class="testimonial-author">
                                                 <div class="testimonial-author-thumbnail">
-                                                    <img src="img/clients/client-1.jpg" th:src="@{/img/clients/client-1.jpg}" class="rounded-circle" alt=""/>
+                                                    <img th:src="@{/img/clients/client-1.jpg}" src="" class="rounded-circle" alt=""/>
                                                 </div>
                                                 <p><strong>John Doe</strong><span>Okler</span></p>
                                             </div>
