@@ -9,7 +9,7 @@
              data-plugin-options="{'delay': 9000, 'gridwidth': 1170, 'gridheight': 670, 'disableProgressBar': 'on', 'responsiveLevels': [4096,1200,992,500], 'parallax': { 'type': 'scroll', 'origo': 'enterpoint', 'speed': 1000, 'levels': [2,3,4,5,6,7,8,9,12,50], 'disable_onmobile': 'on' }, 'navigation' : {'arrows': { 'enable': true }, 'bullets': {'enable': true, 'style': 'bullets-style-1', 'h_align': 'center', 'v_align': 'bottom', 'space': 7, 'v_offset': 70, 'h_offset': 0}}}">
             <ul>
                 <li data-transition="fade">
-                    <img src="img/slides/slide-bg.jpg"
+                    <img src="img/slides/slide-bg.jpg" th:src="@{/img/slides/slide-bg.jpg}"
                          alt=""
                          data-bgposition="center center"
                          data-bgfit="cover"
@@ -22,7 +22,7 @@
                          data-y="top"
                          data-width="['auto']"
                          data-height="['auto']"
-                         data-basealign="slide"><img src="img/slides/slide-devices.jpg" alt=""></div>
+                         data-basealign="slide"><img src="img/slides/slide-devices.jpg" th:src="@{/img/slides/slide-devices.jpg}" alt=""></div>
                     <div class="tp-caption tp-resizeme"
                          data-frames='[{"delay":1500,"speed":2000,"frame":"0","from":"opacity:0;x:-100%;y:-100%;","to":"o:1;x:0;y:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
                          data-type="image"
@@ -30,7 +30,7 @@
                          data-y="center"
                          data-width="['auto']"
                          data-height="['auto']"
-                         data-basealign="slide"><img src="img/slides/slide-laptop.jpg" alt=""></div>
+                         data-basealign="slide"><img src="img/slides/slide-laptop.jpg" th:src="@{/img/slides/slide-laptop.jpg}" alt=""></div>
                     <div class="tp-caption tp-resizeme rs-parallaxlevel-7"
                          data-frames='[{"delay":2500,"speed":1500,"frame":"0","from":"opacity:0;x:-50%;y:-50%;","to":"opacity:1;x:0;y:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
                          data-type="image"
@@ -38,13 +38,13 @@
                          data-y="-700"
                          data-width="['auto']"
                          data-height="['auto']"
-                         data-basealign="slide"><img src="img/slides/slide-parallax-porto-symbol.png" alt=""></div>
+                         data-basealign="slide"><img src="img/slides/slide-parallax-porto-symbol.png" th:src="@{/img/slides/slide-parallax-porto-symbol.png}" alt=""></div>
                     <div class="tp-caption"
                          data-x="center" data-hoffset="['-150','-150','-150','-240']"
                          data-y="center" data-voffset="['-50','-50','-50','-75']"
                          data-start="1000"
                          data-transform_in="x:[-300%];opacity:0;s:500;"
-                         data-transform_idle="opacity:0.2;s:500;"><img src="img/slides/slide-title-border.png" alt="">
+                         data-transform_idle="opacity:0.2;s:500;"><img src="img/slides/slide-title-border.png" th:src="@{/img/slides/slide-title-border.png}" alt="">
                     </div>
                     <div class="tp-caption text-color-light font-weight-normal"
                          data-x="center"
@@ -58,13 +58,13 @@
                          data-frames='[{"delay":2400,"speed":500,"frame":"0","from":"opacity:0;x:10%;","to":"opacity:1;x:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
                          data-x="center" data-hoffset="['80','80','80','135']"
                          data-y="center" data-voffset="['-33','-33','-33','-55']"><img
-                            src="img/slides/slide-blue-line.png" alt=""></div>
+                            src="img/slides/slide-blue-line.png" th:src="@{/img/slides/slide-blue-line.png}" alt=""></div>
                     <div class="tp-caption"
                          data-x="center" data-hoffset="['150','150','150','240']"
                          data-y="center" data-voffset="['-50','-50','-50','-75']"
                          data-start="1000"
                          data-transform_in="x:[300%];opacity:0;s:500;"
-                         data-transform_idle="opacity:0.2;s:500;"><img src="img/slides/slide-title-border.png" alt="">
+                         data-transform_idle="opacity:0.2;s:500;"><img src="img/slides/slide-title-border.png" th:src="@{/img/slides/slide-title-border.png}" alt="">
                     </div>
                     <div class="tp-caption font-weight-extra-bold text-color-light negative-ls-2"
                          data-frames='[{"delay":1000,"speed":2000,"frame":"0","from":"sX:1.5;opacity:0;fb:20px;","to":"o:1;fb:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
@@ -83,7 +83,7 @@
                     </div>
                 </li>
                 <li class="slide-overlay" data-transition="fade">
-                    <img src="img/slides/slide-bg-2.jpg"
+                    <img src="img/slides/slide-bg-2.jpg" th:src="@{/img/slides/slide-bg-2.jpg}"
                          alt=""
                          data-bgposition="center center"
                          data-bgfit="cover"
@@ -94,7 +94,7 @@
                          data-y="center" data-voffset="['-50','-50','-50','-75']"
                          data-start="1000"
                          data-transform_in="x:[-300%];opacity:0;s:500;"
-                         data-transform_idle="opacity:0.2;s:500;"><img src="img/slides/slide-title-border.png" alt="">
+                         data-transform_idle="opacity:0.2;s:500;"><img src="img/slides/slide-title-border.png" th:src="@{/img/slides/slide-title-border.png}" alt="">
                     </div>
                     <div class="tp-caption text-color-light font-weight-normal"
                          data-x="center"
@@ -109,7 +109,7 @@
                          data-y="center" data-voffset="['-50','-50','-50','-75']"
                          data-start="1000"
                          data-transform_in="x:[300%];opacity:0;s:500;"
-                         data-transform_idle="opacity:0.2;s:500;"><img src="img/slides/slide-title-border.png" alt="">
+                         data-transform_idle="opacity:0.2;s:500;"><img src="img/slides/slide-title-border.png" th:src="@{/img/slides/slide-title-border.png}" alt="">
                     </div>
                     <div class="tp-caption font-weight-extra-bold text-color-light negative-ls-1"
                          data-frames='[{"delay":1000,"speed":2000,"frame":"0","from":"sX:1.5;opacity:0;fb:20px;","to":"o:1;fb:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
@@ -130,7 +130,7 @@
                     </div>
                 </li>
                 <li class="slide-overlay slide-overlay-primary" data-transition="fade">
-                    <img src="img/slides/slide-bg-6.jpg"
+                    <img src="img/slides/slide-bg-6.jpg" th:src="@{/img/slides/slide-bg-6.jpg}"
                          alt=""
                          data-bgposition="center center"
                          data-bgfit="cover"
@@ -141,7 +141,7 @@
                          data-y="center" data-voffset="['-80','-80','-80','-130']"
                          data-start="1000"
                          data-transform_in="x:[-300%];opacity:0;s:500;"
-                         data-transform_idle="opacity:0.2;s:500;"><img src="img/slides/slide-title-border.png" alt="">
+                         data-transform_idle="opacity:0.2;s:500;"><img src="img/slides/slide-title-border.png" th:src="@{/img/slides/slide-title-border.png}" alt="">
                     </div>
                     <div class="tp-caption text-color-light font-weight-normal"
                          data-x="center"
@@ -156,7 +156,7 @@
                          data-y="center" data-voffset="['-80','-80','-80','-130']"
                          data-start="1000"
                          data-transform_in="x:[300%];opacity:0;s:500;"
-                         data-transform_idle="opacity:0.2;s:500;"><img src="img/slides/slide-title-border.png" alt="">
+                         data-transform_idle="opacity:0.2;s:500;"><img src="img/slides/slide-title-border.png" th:src="@{/img/slides/slide-title-border.png}" alt="">
                     </div>
                     <div class="tp-caption font-weight-extra-bold text-color-light"
                          data-frames='[{"delay":1300,"speed":1000,"frame":"0","from":"opacity:0;x:-50%;","to":"opacity:0.7;x:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
@@ -252,19 +252,19 @@
                     <span class="cloud"></span>
                     <div class="col-lg-2 ms-lg-auto">
                         <div class="process-image">
-                            <img src="img/home/home-concept-item-1.png" alt=""/>
+                            <img src="img/home/home-concept-item-1.png" th:src="@{/img/home/home-concept-item-1.png}" alt=""/>
                             <strong>Strategy</strong>
                         </div>
                     </div>
                     <div class="col-lg-2">
                         <div class="process-image process-image-on-middle">
-                            <img src="img/home/home-concept-item-2.png" alt=""/>
+                            <img src="img/home/home-concept-item-2.png" th:src="@{/img/home/home-concept-item-2.png}" alt=""/>
                             <strong>Planning</strong>
                         </div>
                     </div>
                     <div class="col-lg-2">
                         <div class="process-image">
-                            <img src="img/home/home-concept-item-3.png" alt=""/>
+                            <img src="img/home/home-concept-item-3.png" th:src="@{/img/home/home-concept-item-3.png}" alt=""/>
                             <strong>Build</strong>
                         </div>
                     </div>
@@ -273,13 +273,13 @@
                             <div id="fcSlideshow" class="fc-slideshow">
                                 <ul class="fc-slides">
                                     <li><a href="portfolio-single-wide-slider.html"><img class="img-fluid"
-                                                                                         src="img/projects/project-home-1.jpg"
+                                                                                         src="img/projects/project-home-1.jpg" th:src="@{/img/projects/project-home-1.jpg}"
                                                                                          alt=""/></a></li>
                                     <li><a href="portfolio-single-wide-slider.html"><img class="img-fluid"
-                                                                                         src="img/projects/project-home-2.jpg"
+                                                                                         src="img/projects/project-home-2.jpg" th:src="@{/img/projects/project-home-2.jpg}"
                                                                                          alt=""/></a></li>
                                     <li><a href="portfolio-single-wide-slider.html"><img class="img-fluid"
-                                                                                         src="img/projects/project-home-3.jpg"
+                                                                                         src="img/projects/project-home-3.jpg" th:src="@{/img/projects/project-home-3.jpg}"
                                                                                          alt=""/></a></li>
                                 </ul>
                             </div>
@@ -465,28 +465,28 @@
             <div class="owl-carousel owl-theme carousel-center-active-item"
                  data-plugin-options="{'responsive': {'0': {'items': 1}, '476': {'items': 1}, '768': {'items': 5}, '992': {'items': 7}, '1200': {'items': 7}}, 'autoplay': true, 'autoplayTimeout': 3000, 'dots': false}">
                 <div>
-                    <img class="img-fluid" src="img/logos/logo-1.png" alt="">
+                    <img class="img-fluid" src="img/logos/logo-1.png" th:src="@{/img/logos/logo-1.png}" alt="">
                 </div>
                 <div>
-                    <img class="img-fluid" src="img/logos/logo-2.png" alt="">
+                    <img class="img-fluid" src="img/logos/logo-2.png" th:src="@{/img/logos/logo-2.png}" alt="">
                 </div>
                 <div>
-                    <img class="img-fluid" src="img/logos/logo-3.png" alt="">
+                    <img class="img-fluid" src="img/logos/logo-3.png" th:src="@{/img/logos/logo-3.png}" alt="">
                 </div>
                 <div>
-                    <img class="img-fluid" src="img/logos/logo-4.png" alt="">
+                    <img class="img-fluid" src="img/logos/logo-4.png" th:src="@{/img/logos/logo-4.png}" alt="">
                 </div>
                 <div>
-                    <img class="img-fluid" src="img/logos/logo-5.png" alt="">
+                    <img class="img-fluid" src="img/logos/logo-5.png" th:src="@{/img/logos/logo-5.png}" alt="">
                 </div>
                 <div>
-                    <img class="img-fluid" src="img/logos/logo-6.png" alt="">
+                    <img class="img-fluid" src="img/logos/logo-6.png" th:src="@{/img/logos/logo-6.png}" alt="">
                 </div>
                 <div>
-                    <img class="img-fluid" src="img/logos/logo-4.png" alt="">
+                    <img class="img-fluid" src="img/logos/logo-4.png" th:src="@{/img/logos/logo-4.png}" alt="">
                 </div>
                 <div>
-                    <img class="img-fluid" src="img/logos/logo-2.png" alt="">
+                    <img class="img-fluid" src="img/logos/logo-2.png" th:src="@{/img/logos/logo-2.png}" alt="">
                 </div>
             </div>
         </div>
@@ -664,7 +664,7 @@
                                             <div class="testimonial-arrow-down"></div>
                                             <div class="testimonial-author">
                                                 <div class="testimonial-author-thumbnail">
-                                                    <img src="img/clients/client-1.jpg" class="rounded-circle" alt=""/>
+                                                    <img src="img/clients/client-1.jpg" th:src="@{/img/clients/client-1.jpg}" class="rounded-circle" alt=""/>
                                                 </div>
                                                 <p><strong>John Doe</strong><span>Okler</span></p>
                                             </div>
@@ -683,7 +683,7 @@
                                             <div class="testimonial-arrow-down"></div>
                                             <div class="testimonial-author">
                                                 <div class="testimonial-author-thumbnail">
-                                                    <img src="img/clients/client-1.jpg" class="rounded-circle" alt=""/>
+                                                    <img src="img/clients/client-1.jpg" th:src="@{/img/clients/client-1.jpg}" class="rounded-circle" alt=""/>
                                                 </div>
                                                 <p><strong>John Doe</strong><span>Okler</span></p>
                                             </div>
