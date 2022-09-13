@@ -1,8 +1,11 @@
 package com.vionox.tools.tvscraper.accounting.service.contracts;
 
 import com.vionox.tools.tvscraper.dto.UserDto;
+import com.vionox.tools.tvscraper.model.user.PasswordResetToken;
 import com.vionox.tools.tvscraper.model.user.Role;
 import com.vionox.tools.tvscraper.model.user.UserEntity;
+import com.vionox.tools.tvscraper.model.user.VerificationToken;
+import com.vionox.tools.tvscraper.model.user.device.NewLocationToken;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Collection;
@@ -17,15 +20,21 @@ public interface IUserService
 
     UserEntity getUser(String verificationToken);
 
+    VerificationToken getVerificationToken(String VerificationToken);
+
     void saveRegisteredUser(UserEntity user);
 
     void deleteUser(UserEntity user);
 
     void createVerificationTokenForUser(UserEntity user, String token);
 
+    VerificationToken generateNewVerificationToken(String existingVerificationToken);
+
     void createPasswordResetTokenForUser(UserEntity user, String token);
 
     UserEntity findUserByEmail(String email);
+
+    PasswordResetToken getPasswordResetToken(String token);
 
     Optional<UserEntity> getUserByPasswordResetToken(String token);
 
@@ -42,6 +51,8 @@ public interface IUserService
     UserEntity updateUser2FA(boolean use2FA);
 
     List<String> getUsersFromSessionRegistry();
+
+    NewLocationToken isNewLoginLocation(String username, String ip);
 
     String isValidNewLocationToken(String token);
 
