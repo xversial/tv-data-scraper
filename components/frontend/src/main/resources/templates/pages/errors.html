@@ -10,9 +10,9 @@
                 <div class="col text-center">
                     <div class="logo">
                         <a th:href="@{/index.html}">
-                            <img width="auto" height="58" th:src="@{/img/logo/duvallwifilogo.webp}"
+                            <img width="auto" height="58" src="/img/logo/duvallwifilogo.webp" th:src="@{/img/logo/duvallwifilogo.webp}"
                                  th:alt="#{error.generic.logo.alt}"
-                                 alt="Porto">
+                                 alt="Duvall Wi-Fi">
                         </a>
                     </div>
                 </div>
@@ -26,11 +26,11 @@
                 <div class="row justify-content-center py-3">
                     <div class="col-6 text-center">
                         <div class="http-error-main">
-                            <h2 class="mb-0" ><span th:text="${statusCode}"></span>!</h2>
-                            <span class="text-6 font-weight-bold text-color-dark" th:text="${errorHeading}">
+                            <h2 class="mb-0" ><span th:text="${statusCode != null} ? ${statusCode} : ${status}"></span>!</h2>
+                            <span class="text-6 font-weight-bold text-color-dark" th:text="${errorHeading != null} ? ${errorHeading} : ${error}">
                                 UNEXPECTED ERROR
                             </span>
-                            <p class="text-3 my-4 line-height-8" th:text="${errorMessage}">
+                            <p class="text-3 my-4 line-height-8" th:text="${errorMessage != null} ? ${errorMessage} : ${message}">
                                 An unexpected error has occured.
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                                 Phasellus blandit massa enim.
