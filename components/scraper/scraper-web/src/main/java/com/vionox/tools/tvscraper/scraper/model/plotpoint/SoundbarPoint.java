@@ -14,13 +14,17 @@ public class SoundbarPoint extends FrequencyPlotPoint
     private static final Logger LOG = LoggerFactory.getLogger(SoundbarPoint.class);
     double response1dBr;
 
+    // <editor-fold desc="Setter methods">
     public void setResponse1dBr(final double response1dBr)
     {
         this.response1dBr = response1dBr;
     }
+    // </editor-fold>
 
+    // <editor-fold desc="String setter methods">
     public void setResponse1dBr(final String response1dBr)
     {
         setResponse1dBr(Double.parseDouble(response1dBr));
     }
+    // </editor-fold>
 }

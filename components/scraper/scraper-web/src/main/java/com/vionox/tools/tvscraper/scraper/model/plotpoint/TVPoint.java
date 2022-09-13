@@ -19,6 +19,7 @@ public class TVPoint extends FrequencyPlotPoint
     double responseMAXdBSPL;
     double volumeMAXdBSPL;
 
+    // <editor-fold desc="Setter methods">
     public void setResponse1dBSPL(final double response1dBSPL)
     {
         this.response1dBSPL = response1dBSPL;
@@ -48,7 +49,9 @@ public class TVPoint extends FrequencyPlotPoint
     {
         this.volumeMAXdBSPL = volumeMAXdBSPL;
     }
+    // </editor-fold>
 
+    // <editor-fold desc="String setter methods">
     public void setResponse1dBSPL(final String response1dBSPL)
     {
         setResponse1dBSPL(Double.parseDouble(response1dBSPL));
@@ -78,4 +81,5 @@ public class TVPoint extends FrequencyPlotPoint
     {
         setVolumeMAXdBSPL(Double.parseDouble(volumeMAXdBSPL));
     }
+    // </editor-fold>
 }
