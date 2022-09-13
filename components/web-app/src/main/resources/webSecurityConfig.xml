@@ -78,8 +78,6 @@
             </user-service>
             <password-encoder ref="encoder"/>
         </authentication-provider>-->
-<!--        <authentication-provider-->
-<!--                ref="customAuthenticationProvider" />-->
         <authentication-provider user-service-ref="userDetailsService">
             <password-encoder ref="encoder"/>
         </authentication-provider>
@@ -116,14 +114,6 @@
     </beans:bean>
     <beans:bean id="customAccessDeniedHandler"
                 class="com.vionox.tools.tvscraper.accounting.handlers.CustomAccessDeniedHandler"/>
-
-    <!--    <beans:bean id="customAuthenticationProvider"-->
-<!--    class="com.duvallwifi.hotspot.auth.CustomAuthenticationProvider" depends-on="userDetailsService">-->
-<!--        <beans:constructor-arg value="userDetailsService" />-->
-<!--        <beans:property name="userDetailsService">-->
-<!--            <beans:ref bean="userDetailsService" />-->
-<!--        </beans:property>-->
-<!--    </beans:bean>-->
 
 
 </beans:beans>
