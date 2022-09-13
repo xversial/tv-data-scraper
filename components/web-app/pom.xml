@@ -20,12 +20,12 @@
 
         <!-- <editor-fold desc="Project Module dependencies"> -->
         <dependency>
-            <groupId>${project.groupId}</groupId>
             <artifactId>models</artifactId>
+            <groupId>${project.groupId}</groupId>
         </dependency>
         <dependency>
-            <groupId>${project.groupId}</groupId>
             <artifactId>accounting</artifactId>
+            <groupId>${project.groupId}</groupId>
         </dependency>
         <dependency>
             <artifactId>frontend</artifactId>
