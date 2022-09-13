@@ -2,10 +2,12 @@ package com.vionox.tools.tvscraper.scraper.model.plotpoint;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.experimental.SuperBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @Data
+@SuperBuilder
 @EqualsAndHashCode(callSuper = true)
 public class SoundbarPoint extends FrequencyPlotPoint
 {
