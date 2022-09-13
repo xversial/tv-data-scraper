@@ -40,6 +40,7 @@
         <ua-parser.version>1.5.2</ua-parser.version>
         <google.guava.version>30.1-jre</google.guava.version>
         <commons-text.version>1.9</commons-text.version>
+        <jsoup.version>1.15.3</jsoup.version>
     </properties>
 
     <dependencyManagement>
@@ -127,6 +128,12 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-text</artifactId>
                 <version>${commons-text.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jsoup</groupId>
+                <artifactId>jsoup</artifactId>
+                <version>${jsoup.version}</version>
             </dependency>
 
             <!-- <editor-fold desc="Telemetry/Tracing"> -->
