@@ -14,7 +14,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication
 @EntityScan(basePackages = {"com.vionox.tools.tvscraper"})  // force scan JPA entities
 @EnableConfigurationProperties
-@ComponentScan(basePackages = {"com.vionox.tools.tvscraper"})
 @SpringBootConfiguration
 @EnableJpaRepositories(basePackages = {"com.vionox.tools.tvscraper"})
 public class SpringBootTomcatApplication extends SpringBootServletInitializer

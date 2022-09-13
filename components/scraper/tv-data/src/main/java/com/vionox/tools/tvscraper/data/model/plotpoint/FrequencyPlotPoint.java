@@ -1,19 +1,19 @@
-package com.vionox.tools.tvscraper.scraper.model.plotpoint;
+package com.vionox.tools.tvscraper.data.model.plotpoint;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.Serializable;
+
 @Data
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@EqualsAndHashCode(callSuper = true)
 @SuperBuilder
-public class FrequencyPlotPoint
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class FrequencyPlotPoint extends PlotPoint implements Serializable
 {
     private static final Logger LOG = LoggerFactory.getLogger(FrequencyPlotPoint.class);
     double frequencyHz;
