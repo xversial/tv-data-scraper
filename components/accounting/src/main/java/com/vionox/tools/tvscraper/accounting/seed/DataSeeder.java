@@ -34,6 +34,7 @@ public class DataSeeder implements ApplicationRunner
 
     public void seedUser(String email, String password, String first, String last)
     {
+        LOG.trace("Seeding user {}", email);
         if (userService.checkIfUserExist(email))
             return;
 
@@ -49,6 +50,7 @@ public class DataSeeder implements ApplicationRunner
             user.setLot(1);
         } finally
         {
+            LOG.trace("Saving user {}", user.getEmail());
             userService.registerNewUserAccount(user);
         }
     }
