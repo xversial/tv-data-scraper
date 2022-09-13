@@ -18,5 +18,6 @@
         <module>models</module>
         <module>accounting</module>
         <module>frontend</module>
+        <module>scraper</module>
     </modules>
 </project>
