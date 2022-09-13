@@ -44,12 +44,10 @@
         <!-- </editor-fold> END Spring Boot dependencies -->
 
         <!-- <editor-fold desc="Logging"> -->
-        <!-- <editor-fold desc="slf4j"> -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
         </dependency>
-        <!-- </editor-fold> -->
         <!-- </editor-fold> END Logging -->
 
     </dependencies>
