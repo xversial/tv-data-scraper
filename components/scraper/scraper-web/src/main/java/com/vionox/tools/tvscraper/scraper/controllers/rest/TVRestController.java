@@ -6,12 +6,15 @@ import com.vionox.tools.tvscraper.data.model.plotpoint.TVPoint;
 import com.vionox.tools.tvscraper.data.scraping.RTings;
 import com.vionox.tools.tvscraper.data.service.TelevisionDataHelper;
 import com.vionox.tools.tvscraper.data.service.TelevisionDataService;
+import com.vionox.tools.tvscraper.scraper.service.CsvExportService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -24,6 +27,8 @@ public class TVRestController
     private TelevisionDataService televisionDataService;
     @Autowired
     private TelevisionDataHelper televisionDataHelper;
+    @Autowired
+    private CsvExportService csvExportService;
 
 
     private ArrayList<Television> getAllTVs()
@@ -54,9 +59,17 @@ public class TVRestController
 
     @RequestMapping(value = "/csv", method = RequestMethod.GET)
     @ResponseBody
-    public Object fetchAllCSV(HttpServletRequest request) {
+    public Object fetchAllCSV(HttpServletRequest request, HttpServletResponse response) {
         final Map<Integer, Television> tvs = televisionDataService.getTVModels();
-
+        response.setContentType("text/csv");
+        response.addHeader("Content-Disposition","attachment; filename=\"televisions.csv\"");
+        try
+        {
+            csvExportService.writeTelevisionsToCSV(response.getWriter());
+        } catch (IOException e)
+        {
+            LOG.warn(e.getMessage());
+        }
 
         return tvs;
     }
