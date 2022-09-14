@@ -10,6 +10,7 @@
         <logger name="com.vionox" level="TRACE"/>
     </springProfile>
     <logger name="com.vionox" level="TRACE"/>
+    <logger name="org.springframework.cache" level="TRACE"/>
     <root level="INFO">
         <appender-ref ref="Console"/>
     </root>
