@@ -7,9 +7,19 @@ import com.vionox.tools.tvscraper.dao.PrivilegeRepository;
 import com.vionox.tools.tvscraper.model.user.UserEntity;
 import com.vionox.tools.tvscraper.model.user.Privilege;
 import com.vionox.tools.tvscraper.model.user.Role;
+import net.sf.ehcache.Element;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
+import org.springframework.cache.Cache;
+import org.springframework.cache.CacheManager;
+import org.springframework.cache.concurrent.ConcurrentMapCacheManager;
 import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.core.env.AbstractEnvironment;
+import org.springframework.core.env.Environment;
+import org.springframework.core.env.MapPropertySource;
+import org.springframework.core.env.PropertySource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -30,6 +40,7 @@ import java.util.*;
 @Transactional
 public class DebuggingController
 {
+    private static final Logger log = LoggerFactory.getLogger(DebuggingController.class);
     @Autowired
     private UserRepository userRepository;
 
@@ -38,6 +49,104 @@ public class DebuggingController
 
     @Autowired
     private PrivilegeRepository privilegeRepository;
+    @Autowired
+    private CacheManager cacheManager;
+
+    @Autowired
+    private Environment env;
+
+    @RequestMapping(value = "/cache/graph", method = RequestMethod.GET)
+    @ResponseBody
+    public Object getCachedGraph(HttpServletRequest request) {
+        final Collection<String> cacheNames = cacheManager.getCacheNames();
+        log.trace("Caches: {}", cacheNames);
+
+        String cacheChoice = null;
+        for (String cache :
+                cacheNames)
+        {
+            cacheChoice = cache;
+            if(cacheChoice.equals("tvFrequencyResponse")){
+                log.trace("Found cache {}", cacheChoice);
+                break;
+            }
+        }
+        if(cacheChoice==null)
+        {
+            return "No caches available";
+        }
+        Cache cache = cacheManager.getCache(cacheChoice);
+//        Cache cache = cacheManager.getCache("tvFrequencyResponse");
+        Object cachedObject = null;
+//        cacheManager.g
+        Object nativeCache = cache.getNativeCache();
+        if (nativeCache instanceof net.sf.ehcache.Ehcache) {
+            net.sf.ehcache.Ehcache ehCache = (net.sf.ehcache.Ehcache) nativeCache;
+            List<Object> keys = ehCache.getKeys();
+
+            if (keys.size() > 0) {
+                for (Object key : keys) {
+                    Element element = ehCache.get(key);
+                    if (element != null) {
+
+                        cachedObject = element.getObjectValue();
+
+                    }
+                }
+            }
+        } else {
+            return cache;
+        }
+        return cachedObject;
+    }
+    @RequestMapping(value = "/cache/item/{cacheName}", method = RequestMethod.GET)
+    @ResponseBody
+    public Object getCacheName(HttpServletRequest request, @PathVariable(value="cacheName") String cacheName) {
+        final Collection<String> cacheNames = cacheManager.getCacheNames();
+
+        Cache cache = cacheManager.getCache(cacheName);
+//        Cache cache = cacheManager.getCache("tvFrequencyResponse");
+        Object cachedObject = null;
+//        cacheManager.g
+        Object nativeCache = cache.getNativeCache();
+        if (nativeCache instanceof net.sf.ehcache.Ehcache) {
+            net.sf.ehcache.Ehcache ehCache = (net.sf.ehcache.Ehcache) nativeCache;
+            List<Object> keys = ehCache.getKeys();
+
+            if (keys.size() > 0) {
+                for (Object key : keys) {
+                    Element element = ehCache.get(key);
+                    if (element != null) {
+
+                        cachedObject = element.getObjectValue();
+
+                    }
+                }
+            }
+        } else {
+            return cache;
+        }
+        return cachedObject;
+    }
+
+    private Map getAllConfig()
+    {
+        Map<String, Object> map = new HashMap();
+        for(Iterator it = ((AbstractEnvironment) env).getPropertySources().iterator(); it.hasNext(); ) {
+            PropertySource propertySource = (PropertySource) it.next();
+            if (propertySource instanceof MapPropertySource) {
+                map.putAll(((MapPropertySource) propertySource).getSource());
+            }
+        }
+        return map;
+    }
+    @RequestMapping(value = "/config", method = RequestMethod.GET)
+    @ResponseBody
+    public Object getConfig(HttpServletRequest request) {
+        final String property = env.getProperty("spring.cache.type");
+        log.trace("getConfig");
+        return getAllConfig();
+    }
 
     @RequestMapping(value = "/username", method = RequestMethod.GET)
     @ResponseBody
