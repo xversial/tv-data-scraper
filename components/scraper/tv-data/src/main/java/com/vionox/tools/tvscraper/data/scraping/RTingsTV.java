@@ -7,12 +7,8 @@ import com.fasterxml.jackson.databind.type.TypeFactory;
 import com.vionox.tools.tvscraper.data.model.GraphData;
 import com.vionox.tools.tvscraper.data.model.devices.Television;
 import com.vionox.tools.tvscraper.data.model.graph.TVGraphData;
-import com.vionox.tools.tvscraper.data.model.plotpoint.TVPoint;
 import io.sentry.Sentry;
-import org.apache.commons.lang3.StringUtils;
-import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -74,7 +70,15 @@ public class RTingsTV
         return scrapeExtractor.extractJS(scriptElements, "products_info");
     }
 
-    public Map<Integer, Television> tvModelList()
+    public Collection<Television> tvModelList()
+    {
+        final Document doc = scraperWebFetch.fetch("https://www.rtings.com/tv/graph");
+        final Object products_info = getTVModelJson(doc);
+        final Map<Integer, Television> tvList = objectMapper(String.valueOf(products_info));
+        return tvList.values();
+    }
+
+    public Map<Integer, Television> tvModelMap()
     {
         final Document doc = scraperWebFetch.fetch("https://www.rtings.com/tv/graph");
         final Object products_info = getTVModelJson(doc);
@@ -84,7 +88,7 @@ public class RTingsTV
 
     public Television findTV(int id)
     {
-        final Map<Integer, Television> tvList = tvModelList();
+        final Map<Integer, Television> tvList = tvModelMap();
         tvList.values().toArray();
         for (Television tv :
                 tvList.values())
@@ -139,7 +143,7 @@ public class RTingsTV
     public Map<Integer, Television> getTVModels()
     {
         final ArrayList<Television> televisionModels = new ArrayList<>();
-        final Map<Integer, Television> tvList = tvModelList();
+        final Map<Integer, Television> tvList = tvModelMap();
 
         LOG.trace("Test");
 
