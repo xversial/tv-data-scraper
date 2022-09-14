@@ -1,17 +1,16 @@
 package com.vionox.tools.tvscraper.data.scraping;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.databind.type.TypeFactory;
-import com.vionox.tools.tvscraper.data.model.DeviceType;
 import com.vionox.tools.tvscraper.data.model.GraphData;
 import com.vionox.tools.tvscraper.data.model.devices.Television;
+import com.vionox.tools.tvscraper.data.model.graph.TVGraphData;
+import com.vionox.tools.tvscraper.data.model.plotpoint.TVPoint;
 import io.sentry.Sentry;
 import org.apache.commons.lang3.StringUtils;
-import org.jsoup.HttpStatusException;
 import org.jsoup.Jsoup;
-import org.jsoup.nodes.DataNode;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -19,12 +18,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Component
 public class RTingsTV
@@ -36,19 +32,16 @@ public class RTingsTV
     @Autowired
     private ScrapeExtractor scrapeExtractor;
 
-    private Object objectMapper(String jsonString)
+    private Map<Integer, Television> objectMapper(String jsonString)
     {
         ObjectMapper mapper = new ObjectMapper();
         try
         {
-            JsonNode jsonNode = mapper.readTree(jsonString);
-            String sourceString = jsonString;
-//            String sourceString = jsonNode.at("/results").toString();
-            LinkedHashMap<String, Television> map = mapper.readValue(jsonString, LinkedHashMap.class);
-            mapJsonToObjectList(jsonString, Television.class);
+            Map map3 =
+                    mapper.readValue(jsonString, new TypeReference<Map<Integer, Television>>(){});
+            final Collection valueSet = map3.values();
 
-            Television[] tv = mapper.readValue(sourceString, Television[].class);
-            return tv;
+            return map3;
         } catch (JsonProcessingException e)
         {
             LOG.warn(e.getMessage());
@@ -81,20 +74,79 @@ public class RTingsTV
         return scrapeExtractor.extractJS(scriptElements, "products_info");
     }
 
+    private Map<Integer, Television> tvModelList()
+    {
+        final Document doc = scraperWebFetch.fetch("https://www.rtings.com/tv/graph");
+        final Object products_info = getTVModelJson(doc);
+        final Map<Integer, Television> tvList = objectMapper(String.valueOf(products_info));
+        return tvList;
+    }
+
+    public Television findTV(int id)
+    {
+        final Map<Integer, Television> tvList = tvModelList();
+        tvList.values().toArray();
+        for (Television tv :
+                tvList.values())
+        {
+            if(tv.getId()==id){
+                return tv;
+            }
+        }
+        return null;
+    }
+
+    public GraphData getTVGraph(int id)
+    {
+        final Television tv = findTV(id);
+        final GraphData frequencyResponse = getFrequencyResponse(tv);
+        return frequencyResponse;
+    }
+
+    public GraphData getFrequencyResponse(Television tv)
+    {
+//        final ArrayList<TVPoint> tvPoints = new ArrayList<>();
+
+        try
+        {
+            String url = "https://www.rtings.com/graph/data/"+tv.getId()+"/13812";
+            RestTemplate restTemplate = new RestTemplate();
+//            final String response = restTemplate.getForObject(url, String.class);
+
+            /*ObjectMapper mapper = new ObjectMapper();
+            GraphData map3 =
+                    mapper.readValue(response, TVGraphData.class);*/
+
+//            final Document fetch = scraperWebFetch.fetch(url);
+
+//                    mapper.readValue(response, new TypeReference<Map<Integer, Television>>(){});
+
+
+            final TVGraphData forObject = restTemplate.getForObject(url, TVGraphData.class);
+
+            LOG.trace("Done");
+            return forObject;
+
+        } catch (RuntimeException e)
+        {
+            LOG.warn(e.getMessage());
+            Sentry.captureException(e);
+        }
+
+        return null;
+    }
+
     public Object getTVModels()
     {
         final ArrayList<Television> televisionModels = new ArrayList<>();
-
-        final Document doc = scraperWebFetch.fetch("https://www.rtings.com/tv/graph");
-        final Object products_info = getTVModelJson(doc);
-        final Object tvList = objectMapper(String.valueOf(products_info));
+        final Map<Integer, Television> tvList = tvModelList();
 
         LOG.trace("Test");
 
         if(true){
-            return products_info;
+            return tvList;
         }
-
+/*
         final Elements tvOptionSet = doc.select("body select#product_select option");
 
         for (Element tvOption : tvOptionSet) {
@@ -109,8 +161,9 @@ public class RTingsTV
                     .build();
             televisionModels.add(tv);
         }
-        return televisionModels;
+        return televisionModels;*/
 
+        return null;
     }
 
     public Object getTVs()

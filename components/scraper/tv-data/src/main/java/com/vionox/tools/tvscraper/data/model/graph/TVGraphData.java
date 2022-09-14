@@ -1,13 +1,15 @@
-package com.vionox.tools.tvscraper.data.model.devices;
+package com.vionox.tools.tvscraper.data.model.graph;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import com.vionox.tools.tvscraper.data.model.GraphData;
+import com.vionox.tools.tvscraper.data.model.plotpoint.TVPoint;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import lombok.experimental.SuperBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,22 +17,15 @@ import java.io.Serializable;
 import java.util.List;
 
 @Data
-@SuperBuilder
+@EqualsAndHashCode(callSuper = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 @NoArgsConstructor
 @ToString
-public class ElectronicDevice implements Serializable
+public class TVGraphData extends GraphData implements Serializable
 {
-    private static final Logger LOG = LoggerFactory.getLogger(ElectronicDevice.class);
-    @JsonProperty(value = "name")
-    String name;
-    @JsonProperty(value = "brand")
-    String brand;
-    @JsonProperty(value = "model")
-    String model;
-    @JsonProperty(value = "comp_ids")
-    List<Integer> comparisonID;
-    @JsonProperty(value = "id")
-    private int id;
+    private static final Logger LOG = LoggerFactory.getLogger(TVGraphData.class);
+
+    @JsonProperty(value = "data")
+    List<TVPoint> data;
 }
