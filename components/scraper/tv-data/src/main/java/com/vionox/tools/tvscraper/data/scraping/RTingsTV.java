@@ -74,7 +74,7 @@ public class RTingsTV
         return scrapeExtractor.extractJS(scriptElements, "products_info");
     }
 
-    private Map<Integer, Television> tvModelList()
+    public Map<Integer, Television> tvModelList()
     {
         final Document doc = scraperWebFetch.fetch("https://www.rtings.com/tv/graph");
         final Object products_info = getTVModelJson(doc);
@@ -136,7 +136,7 @@ public class RTingsTV
         return null;
     }
 
-    public Object getTVModels()
+    public Map<Integer, Television> getTVModels()
     {
         final ArrayList<Television> televisionModels = new ArrayList<>();
         final Map<Integer, Television> tvList = tvModelList();
