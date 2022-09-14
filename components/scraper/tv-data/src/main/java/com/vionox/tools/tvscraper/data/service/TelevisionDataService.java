@@ -37,20 +37,19 @@ public class TelevisionDataService
         return this.getFrequencyResponse(tv);
     }
 
-    @Cacheable(value = "tvFrequencyResponse", key = "#tv.id")
+    @Cacheable(value = "tvFrequencyResponse", key = "#tv.id", unless="#result == null")
     public TVGraphData getFrequencyResponse(Television tv)
     {
         try
         {
-            String url = "https://www.rtings.com/graph/data/" + tv.getId() + "/13812";
+            LOG.trace("Requesting graph data on frequency response for the {} (TV {})", tv.getName(), tv.getId());
             RestTemplate restTemplate = new RestTemplate();
-            return restTemplate.getForObject(url, TVGraphData.class);
+            return restTemplate.getForObject(scraperWebFetch.getGraphURL(tv.getId(), 13812), TVGraphData.class);
         } catch (RuntimeException e)
         {
             LOG.warn(e.getMessage());
             Sentry.captureException(e);
         }
-
         return null;
     }
 
@@ -66,12 +65,24 @@ public class TelevisionDataService
 
     public Television getTV(int id)
     {
+        return getTV(id, false);
+    }
+    public Television getTV(int id, boolean full)
+    {
+        LOG.trace("Finding{} TV with id {}", (full?" full model":""), id);
+
         final Map<Integer, Television> tvList = rtingsTV.tvModelList();
         tvList.values().toArray();
         for (Television tv : tvList.values())
         {
             if (tv.getId() == id)
             {
+                LOG.trace("Found TV {} with id {}", tv.getName(), tv.getId());
+                if(full)
+                {
+                    LOG.trace("Getting frequency response to add to model");
+                    tv.setFrequencyResponse(getFrequencyResponse(tv));
+                }
                 return tv;
             }
         }
