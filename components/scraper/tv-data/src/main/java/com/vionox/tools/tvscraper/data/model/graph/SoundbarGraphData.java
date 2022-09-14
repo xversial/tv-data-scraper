@@ -1,30 +1,32 @@
-package com.vionox.tools.tvscraper.data.model.devices;
+package com.vionox.tools.tvscraper.data.model.graph;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import com.vionox.tools.tvscraper.data.model.graph.SoundbarGraphData;
-import com.vionox.tools.tvscraper.data.model.graph.TVGraphData;
+import com.vionox.tools.tvscraper.data.model.GraphData;
+import com.vionox.tools.tvscraper.data.model.plotpoint.SoundbarPoint;
+import com.vionox.tools.tvscraper.data.model.plotpoint.TVPoint;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import lombok.experimental.SuperBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Data
-@SuperBuilder
 @EqualsAndHashCode(callSuper = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 @NoArgsConstructor
 @ToString
-public class Soundbar extends ElectronicDevice implements Serializable
+public class SoundbarGraphData extends GraphData implements Serializable
 {
-    private static final Logger LOG = LoggerFactory.getLogger(Soundbar.class);
+    private static final Logger LOG = LoggerFactory.getLogger(SoundbarGraphData.class);
 
-    SoundbarGraphData frequencyResponse;
+    @JsonProperty(value = "data")
+    List<SoundbarPoint> data;
 }

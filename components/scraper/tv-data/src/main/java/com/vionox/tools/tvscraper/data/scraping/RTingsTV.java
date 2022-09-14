@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.databind.type.TypeFactory;
 import com.vionox.tools.tvscraper.data.model.GraphData;
+import com.vionox.tools.tvscraper.data.model.devices.Soundbar;
 import com.vionox.tools.tvscraper.data.model.devices.Television;
 import com.vionox.tools.tvscraper.data.model.graph.TVGraphData;
 import io.sentry.Sentry;
@@ -49,6 +50,26 @@ public class RTingsTV
         }
         return null;
     }
+    private Map<Integer, Soundbar> objectMapperSoundbar(String jsonString)
+    {
+        ObjectMapper mapper = new ObjectMapper();
+        try
+        {
+            Map map3 =
+                    mapper.readValue(jsonString, new TypeReference<Map<Integer, Soundbar>>(){});
+
+            return map3;
+        } catch (JsonProcessingException e)
+        {
+            LOG.warn(e.getMessage());
+            Sentry.captureException(e);
+        } catch (Exception e)
+        {
+            LOG.warn(e.getMessage());
+            Sentry.captureException(e);
+        }
+        return null;
+    }
 
     protected static <T> List<T> mapJsonToObjectList(String json, Class<T> clazz) throws Exception
     {
@@ -63,7 +84,7 @@ public class RTingsTV
         return list;
     }
 
-    private Object getTVModelJson(Document doc)
+    private Object getDeviceModelJson(Document doc)
     {
         LOG.trace("Fetching TV Models");
         Elements scriptElements = doc.getElementsByTag("script");
@@ -72,16 +93,26 @@ public class RTingsTV
 
     public Collection<Television> tvModelList()
     {
-        final Document doc = scraperWebFetch.fetch("https://www.rtings.com/tv/graph");
-        final Object products_info = getTVModelJson(doc);
+        final Object products_info = deviceModelJson("tv");
         final Map<Integer, Television> tvList = objectMapper(String.valueOf(products_info));
         return tvList.values();
     }
 
+    public Object deviceModelJson(String deviceType)
+    {
+        final Document doc = scraperWebFetch.fetch("https://www.rtings.com/"+deviceType+"/graph");
+        return getDeviceModelJson(doc);
+    }
+    public Map<Integer, Soundbar> soundbarModelMap()
+    {
+        final Object products_info = deviceModelJson("soundbar");
+        final Map<Integer, Soundbar> soundbarList = objectMapperSoundbar(String.valueOf(products_info));
+        return soundbarList;
+    }
+
     public Map<Integer, Television> tvModelMap()
     {
-        final Document doc = scraperWebFetch.fetch("https://www.rtings.com/tv/graph");
-        final Object products_info = getTVModelJson(doc);
+        final Object products_info = deviceModelJson("tv");
         final Map<Integer, Television> tvList = objectMapper(String.valueOf(products_info));
         return tvList;
     }

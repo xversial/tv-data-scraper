@@ -20,6 +20,7 @@ public class SimpleCacheCustomizer implements CacheManagerCustomizer<ConcurrentM
                 "transactions",
                 "TelevisionDataServiceCache",
                 "televisionModels",
+                "soundbarFrequencyResponse",
                 "tvFrequencyResponse"));
     }
 }

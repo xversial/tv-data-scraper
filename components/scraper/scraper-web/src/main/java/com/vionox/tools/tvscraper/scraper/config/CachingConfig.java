@@ -23,6 +23,7 @@ public class CachingConfig
                 new ConcurrentMapCache("directory"),
                 new ConcurrentMapCache("televisionModels"),
                 new ConcurrentMapCache("tvFrequencyResponse"),
+                new ConcurrentMapCache("soundbarFrequencyResponse"),
                 new ConcurrentMapCache("TelevisionDataServiceCache"),
                 new ConcurrentMapCache("addresses")));
         return cacheManager;
