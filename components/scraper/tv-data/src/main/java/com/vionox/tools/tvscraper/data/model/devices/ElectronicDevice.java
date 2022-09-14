@@ -32,5 +32,5 @@ public class ElectronicDevice implements Serializable
     @JsonProperty(value = "comp_ids")
     List<Integer> comparisonID;
     @JsonProperty(value = "id")
-    private int id;
+    int id;
 }
